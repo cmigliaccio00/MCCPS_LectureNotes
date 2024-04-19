@@ -1,8 +1,8 @@
-PWD c:/Users/carlo/Desktop/PoliTO/[LM-32]_Laurea Magistrale/IAnno__2023_2024/2__[01UDSOV]_Modeling_and_control_of_cyberphysical_systems/[Dispense]_MCCPS
+PWD c:/Users/carlo/Desktop/PoliTO/[LM-32]_Laurea Magistrale/IAnno__2023_2024/2__[01UDSOV]_Modeling_and_control_of_cyberphysical_systems/MCCPS_LectureNotes
 INPUT c:/texlive/2023/texmf.cnf
 INPUT c:/texlive/2023/texmf-dist/web2c/texmf.cnf
 INPUT c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT c:/Users/carlo/Desktop/PoliTO/[LM-32]_Laurea Magistrale/IAnno__2023_2024/2__[01UDSOV]_Modeling_and_control_of_cyberphysical_systems/[Dispense]_MCCPS/main.tex
+INPUT c:/Users/carlo/Desktop/PoliTO/[LM-32]_Laurea Magistrale/IAnno__2023_2024/2__[01UDSOV]_Modeling_and_control_of_cyberphysical_systems/MCCPS_LectureNotes/main.tex
 OUTPUT main.log
 INPUT c:/texlive/2023/texmf-dist/tex/latex/base/report.cls
 INPUT c:/texlive/2023/texmf-dist/tex/latex/base/report.cls
