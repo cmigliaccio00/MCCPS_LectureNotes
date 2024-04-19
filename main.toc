@@ -43,7 +43,7 @@
 \contentsline {chapter}{\numberline {5}Distributed Consensus based algorithms for CPSs}{28}{}%
 \contentsline {section}{\numberline {5.1}Toward the Fusion Center removal}{28}{}%
 \contentsline {section}{\numberline {5.2}The Consensus algorithm}{28}{}%
-\contentsline {section}{\numberline {5.3}Uses of the Consensus orithm}{28}{}%
+\contentsline {section}{\numberline {5.3}Uses of the Consensus algorithm}{28}{}%
 \contentsline {part}{II\hspace {1em}Control of Cyber-Physical systems}{29}{}%
 \contentsline {chapter}{\numberline {6}System identification: an introduction}{30}{}%
 \contentsline {chapter}{\numberline {7}Set-membership Identification}{31}{}%
