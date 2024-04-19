@@ -1,0 +1,65 @@
+\documentclass[a4paper, 12pt]{report}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{wrapfig}
+\usepackage{amssymb}
+
+\usepackage{glossaries}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{proof}{Proof}
+\usepackage{tikz}
+\tikzstyle{mybox} = [draw=black, thin, rectangle, rounded corners, inner ysep=5pt, inner xsep=5pt, fill=orange!20]
+
+\usepackage[a4paper, top=2cm , bottom=2cm , right=2cm , left=2cm ]{geometry}
+
+\graphicspath{ {images/} }
+
+\titlespacing{\title}{10pt}{50pt}{50pt}
+\titlespacing{\chapter}{0pt}{10pt}{10pt}
+\titlespacing{\section}{10pt}{5pt}{10pt}
+
+\title{
+    \textbf{  \Huge{  MODELING AND  CONTROL OF\\ 
+    CYBER-PHYSICAL SYSTEMS } }\\
+    \textit{Lecture notes}
+}
+\author{Carlo Migliaccio}
+\date{AA 2023/2024}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\part{Modeling of Cyber-Physical systems}
+\chapter{Introduction}
+\input{1_Modeling/Ch1_Intro}
+
+%---------------------------------------------------------------------
+\chapter{Secure estimation of CPSs state under adversarial attacks}
+\input{1_Modeling/Ch2_SecureEstimation}
+
+\chapter{Localization by RSS fingerprinting}
+\input{1_Modeling/Ch3_Localization}
+
+\chapter {Dynamic Secure State Estimation of CPSs under adversarial attacks}
+\input{1_Modeling/Ch4_DynamicSSE}
+
+\chapter{Distributed Consensus based algorithms for CPSs}
+\input{1_Modeling/Ch5_DistributedAlgForCPSs}
+
+
+%------------------------SECOND PART: CONTROL OF CPS---------------
+\part{Control of Cyber-Physical systems}
+\chapter{System identification: an introduction}
+\chapter{Set-membership Identification}
+\chapter{State variable feedback control (SVFB)}
+\chapter{Formation contorl}
+
+\end{document}

@@ -1,0 +1,231 @@
+It has been explained in the previous chapter that for a system 
+\begin{equation} \label{eq:system}
+	\begin{aligned}
+		&x(k+1)=Ax(k)\\
+		&y(k)=Cx(k)
+	\end{aligned}
+\end{equation}
+if one collects $n$ measurements $y(i), i=1,..., n$, we can recover the state $x(k)$ at each $k$, if we are able to find $x(0)$ and then invert the equation
+\begin{equation*}
+	y = \mathcal{O}_n x(0)
+\end{equation*}
+the Theorem by Kalman, states that this is possible, that is the system is \textbf{observable}, if and only if $\text{rank}(\mathcal{O}_n)=n$.
+This is the static-batch approach to the \textbf{state estimation problem}, on the other hand - as an alternative technique - if the system is observable we can estimate $x(k)$(then $x(0)$) dynamically by constructing a device called the \textbf{Observer}, in the deterministic case it is called \textbf{Luemberger Observer}.\\
+
+\section{Review of Luemberger Observer}
+
+A copy of the system (\ref{eq:system}) is made with the only difference of adding a correction term. Starting from this point we use $\hat{x}(k)$ to indicate the \textbf{estimate of the state at the time $k$} (discretized time), and $\hat{y}(k)$ is the output computed by using the estimate. The Luemberger Observer has the following equations: 
+\begin{equation} \label{eq: Luemberger}
+	\begin{aligned}
+			&\hat{x}(k+1)=A\hat{x}(k)-L[\hat{y}(k)-y(k)]\\
+		&\hat{y}(k)=C\hat{x}(k)
+	\end{aligned}
+\end{equation}
+The quantity $e(k)=\hat{x}(k)-x(k)$ is the error of the estimate at time $k$, the aim is to design an online algorithm which could make $e(k)\rightarrow 0 $. \\
+In order to understand the role of the matrix $L\in \mathbb{R}^{n,q}$,  called the \textbf{observer gain matrix}, we can write: 
+\begin{align}
+	e(k+1)&=\hat{x}(k)-x(k)=A\hat{x}(k)-L[\hat{y}(k)-y(k)]-Ax(k)=\\
+	&=A\hat{x}(k)-LC\hat{x}(k)-LCx(k)-Ax(k)=\\
+	&=A[\hat{x}(k)-x(k)]-LC[\hat{x}(k)-x(k)]=\\
+	&=(A-LC) [\hat{x}(k)-x(k)]=\\
+	&=(A-LC) \ e(k)	
+\end{align}
+The resulting equation $e(k+1)=(A-LC)\ e(k)$ describes an LTI discrete time dynamical system in which the state matrix is represented by $A-LC$. From the theory of dynamical systems, we know that the system is asymptotically (internally) stable if after a certain time $k$, it is verified that $e(k)\rightarrow 0$, the result we are seeking, it is verified when the \textit{eigenvalues} of $A-LC$ are in the unitary circle. \\
+
+Regarding the matrix $A$ it is not very interesting to track $x(k)$ if it is asymptotically stable because in this situation $\lim_{k \to \infty} x(k)=0$. So $A$ is required to be stable but not asymptotically (some authors refers to this type of stability as \textbf{marginal stability}).\\
+
+\hspace*{-5mm}
+\begin{tikzpicture}
+	\node [mybox] (box){%
+		\begin{minipage}{.96\textwidth}     %Larghezza del box
+			\textbf{Theorem} If the system is {\color{red}observable}, then there exists $L$ such that $A-LC$ is asymptotically stable. (We can drive the error to zero in order to track the state of the system).
+		\end{minipage}
+	};
+\end{tikzpicture}
+
+\section{State estimation by Least-squares approach}
+At a certain time $k$, given the current measurement $y(k)=Cx(k)$, we might estimate $x(k)$ by solving the following problem: 
+\begin{equation}
+	\hat{x}(k) = \text{arg}\min_{x\in\mathbb{R}^n} \frac{1}{2} 
+	\lVert y(k)-Cx \rVert_2^2 
+\end{equation}
+if $q>n$ and $C$ is full rank. We call $\mathcal{F}(x) =\frac{1}{2} 
+\lVert y(k)-Cx \rVert_2^2$ the Least-Squares functional. 
+There is a problem: the (pseudo)inversion of the matrix $C$, could be non-trivial for a medium-large dimensional problem. Even the classical Gradient Descent Algorithm would be too slow!\\
+A solution is: at each $k$, we run a \textbf{single step} of gradient descent resulting in an \textbf{Online gradient descent}.\\
+
+\hspace*{-5mm}
+\begin{tikzpicture}
+	\node [mybox] (box){%
+		\begin{minipage}{.96\textwidth}     %Larghezza del box
+				\textbf{\underline{Online Gradient Descent (OGD)}} \\
+				Given the measurement $y(k)=Cx(k)$ and $\hat{x}(k)$ computed before time $k$
+				\begin{align}
+					\hat{x}^+(k)&=\hat{x}(k)-\tau\nabla\mathcal{F}(\hat{x}(k)) =  \hat{x}(k)-\tau C^T[C\hat{x}(k)-y(k)]\\
+					&=\hat{x}(k)-\tau C^T  \ [\hat{y}(k)-y(k)] 
+					\leftarrow \text{estimate of} \ x(k)\\
+					\hat{x}(k+1)&=A\hat{x}^+(k) 
+					\leftarrow \text{prediction of} \ x(k+1)\\
+					\hat{y}(k)&=C\hat{x}(k)				
+				\end{align}
+		\end{minipage}
+	};
+\end{tikzpicture}
+By merging estimate and prediction we obtain:
+\begin{equation}\label{eq: OGD_obs}
+	\hat{x}(k+1)=A\hat{x}(k)-\tau AC^T[\hat{y}(k)-y(k)]
+\end{equation}
+It can be noted that there is a certain similarity of the system (\ref{eq: OGD_obs}) and the (\ref{eq: Luemberger}), in particular the OGD is a Lumberger Observer with $L_g=\tau AC^T$.\\
+Since we have fixed, in a certain way, the matrix $L_g$, one would wonder when 
+\begin{equation} \label{eq:OGD_dyn}
+	A-L_gC
+\end{equation}
+is asymptotically stable. 
+We can rewrite it as $A(I-\tau C^TC)$.
+If we choose $\tau<\frac{1}{\lVert C\rVert_2^2}$ then we obtain that 
+$\lVert I - \tau C^TC \rVert \le 1$. Finally, two cases are to be considered: 
+\begin{itemize}
+	\item If $\lVert I - \tau C^TC \rVert = 1$, and A is \textit{marginally stable}, then $A-L_gC$ is marginally stable; 
+	\item  If $\lVert I - \tau C^TC \rVert < 1$, and A is \textit{marginally stable}, then  $A-L_gC$ is \textbf{asymptotically stable}.
+\end{itemize}
+
+Until this moment, we have presented these results for an LTI DT dynamical system in which there are not attacks. What about \textbf{Dynamic Secure State Estimation}?
+
+\section{Dynamic SSE with constant attack}
+Recalling that a CPS under adversarial attacks on the sensors can be described by the system: 
+\begin{equation}
+	\begin{aligned}
+		&x(k+1)=Ax(k)\\
+		&y(k)=Cx(k)+a(k)
+	\end{aligned}
+\end{equation}
+We have seen in the Second Chapter that in this case the problem of observability results in:
+\begin{equation} \label{eq:CPS_attack}
+	\begin{pmatrix}
+		y(0)\\ \vdots \\ y(T-1)
+	\end{pmatrix}=\mathcal{O}_Tx(0)+\begin{pmatrix}
+	a(0) \\ \vdots \\ a(T-1)
+ 	\end{pmatrix}
+\end{equation}
+We have solved this problem for the static case in which we have seen the IST Algorithm, but in the case in which $A$ is not the identity matrix, the problem is not trivial to solve!\\
+If an assumption is done on the 'shape' of the attacks the problem could be well posed, in particular we should assume that the attacks are constant and equal to a vector $a\in\mathbb{R}^q$, at this point the problem (\ref{eq:CPS_attack}) results in:
+\begin{equation} 
+	\begin{pmatrix}
+		y(0)\\ \vdots \\ y(T-1)
+	\end{pmatrix}=\mathcal{O}_nx(0)+\begin{pmatrix}
+		a \\ \vdots \\ a
+	\end{pmatrix} = 
+	\begin{pmatrix}
+		C & I\\
+		CA & I \\
+		\vdots & \vdots\\
+		CA^{T-1} & I	
+	\end{pmatrix} \begin{pmatrix}
+		x(0)\\a
+	\end{pmatrix}
+\end{equation}
+where the matrix 
+\begin{equation}	\label{eq:aug_matCPS}
+	\mathcal{O}_T'=\begin{pmatrix}
+		C & I\\
+		CA & I \\
+		\vdots & \vdots\\
+		CA^{T-1} & I	
+	\end{pmatrix}
+\end{equation}
+is an \textbf{augmented observability matrix}. Is this CPS observable?\\
+
+\noindent
+In order to clarify this aspect, let us consider a couple of measurements for $k=0,1$:
+\begin{align}
+	&y(0)=Cx(0)+a \label{eq:first}\\ 
+	&y(1)=Cx(1)+a=CAx(0)+a \label{eq:second}
+\end{align}
+We might manipulate algebraically these equations in order to eliminate the attack $a$ which is assumed to be constant. For example, one can subtract the (\ref{eq:second}) from the (\ref{eq:first}), and it will be obtained
+\begin{align}
+	&y(1)-y(0)=CAx(0) + a-Cx(0)-a=\\
+	&[CA-C]x(0) =\\
+	&C[A-I]x(0) \label{eq:final_equation}
+\end{align} 
+Moreover, let us suppose that $q=n$ so that the matrix $C[A-I]\in\mathbb{R}^{n,n}$. If such matrix would be invertible, we could recover $x(0)$ without problem by inverting the equation (\ref{eq:final_equation}). One might think that I could go further in the computation of $y(k)$ and by using such manipulations, I can eliminate the attack and recover without problems the state.\\
+\underline{\textbf{BUT}} in many situations the square matrix $A-I$ is not invertible, we have seen that is reasonable that in the $\text{Spec}(A)$ (set of the eigenvalues of A) there is an eigenvalue $\lambda_i=1$ for  some $i$.
+This imply that the matrix $A-I$ has a \textbf{null eigenvalue}, that is the same to confirm that the matrix is \textbf{not full rank} and for this reason \textbf{non invertible}.
+One wonder if we might have a generalization of this concept. It is possible by analysing the \textbf{kernel of} $\mathcal{O}'_T$. To this aim, again, we will exploit some algebraic tricks. This time we subtract couple of rows of the matrix (\ref{eq:aug_matCPS}) from the bottom to the top, obtaining:
+\begin{equation}
+	\begin{pmatrix}
+		C & I \\
+		C(A-I) & I \\
+		\vdots & \vdots \\
+		CA^{T-3} (A-I) & 0\\
+		CA^{T-2} (A-I) & 0
+  	\end{pmatrix} \begin{pmatrix}
+  		x\\a
+  	\end{pmatrix}
+\end{equation}
+This is nothing but the system (\ref{eq:CPS_attack}) rewritten in a different form. Let us neglect at the moment the first row of the rewritten matrix. It is recognizable the matrix $\mathcal{O}_{T-1}$, however due to the fact of being multiplied by $A-I$ the linear system 
+\begin{equation*}
+	\mathcal{O}_{T-1}(A-I)x=0
+\end{equation*}
+is underdetermined and has got infinitely many solutions. Despite $\mathcal{O}_{T-1}$ is full rank (it is a minimum requirement because if the system without attack is not observable, I cannot recover the state with attacks!) we do not have a trivial kernel because of $A-I$ which is not full rank. Moreover if we add the first equation we obtain the total system
+\begin{equation*}
+	\begin{cases}
+		(A-I)x=0\\
+		Cx+a=0
+	\end{cases}
+\end{equation*}
+We are ready to give the following proposition:\\
+
+\hspace*{-5mm}
+\begin{tikzpicture}
+	\node [mybox] (box){%
+		\begin{minipage}{.96\textwidth}     %Larghezza del box
+			\textbf{Proposition} If the matrix $A$ has an eigenvalue = 1, the dynamic CPS with constant attack is not observable.\\
+		\end{minipage}
+	};
+\end{tikzpicture}%
+
+\noindent
+The fact that an eigenvalue of A might be equal to one, is quite common from the moment we do not desire the situation in which the state tends to zero when $k\rightarrow\infty$.\\
+Then, the proposition states that in general a CPS under attacks \textbf{is not observable} even if the attack is \textbf{constant}. However, we have not exploited yet the information about the \textbf{sparsity of the attacks} which allows us to develop a so-called \textbf{{\color{red} SPARSE OBSERVER}}. \\
+Before giving the final result is useful to give a little of notation:
+\begin{equation*}
+	z(k) = \begin{pmatrix}
+		x(k)\\a(k)
+	\end{pmatrix}		\quad
+	\hat{z}(k) = \begin{pmatrix}
+		\hat{x}(k)\\\hat{a}(k)  
+	\end{pmatrix}		\quad
+	\hat{z}^{+}(k)=\begin{pmatrix}
+		\hat{x}^+(k)\\\hat{a}^+(k)
+	\end{pmatrix}		\quad
+	G \ = \ (C \quad I)
+\end{equation*}
+We want to solve the problem of recover the state of the dynamic CPS under constant attacks that is to solve:
+\begin{equation*}
+	\min_{x\in\mathbb{R}^n, a \in \mathbb{R}^q}
+	\frac{1}{2} \lVert y(k) - Gz(k) \rVert_2^2 + 
+	\lambda \lVert a \rVert_1
+\end{equation*}
+It can be demonstrated that after a sufficient number $T$ of steps the solution is given by the following algorithm:\\
+
+\hspace*{-5mm}
+\begin{tikzpicture}
+	\node [mybox] (box){%
+		\begin{minipage}{.96\textwidth}     %Larghezza del box
+			\textbf{\underline{SPARSE OBSERVER}}\\
+			Given $y(k)=Gz(k)$ and $\hat{z}(k)$, 
+			\begin{align*}
+				\hat{z}^+(k)&=\hat{z}(k)-\tau G^T[G\hat{z}(k)-y(k)]
+				& \leftarrow  \text{estimate of} \ z(k)\\
+				\hat{x}(k+1) &= A\hat{x}^+(k) 
+				 & \leftarrow \text{prediction of} x(k+1) \\
+				 \hat{a}^(k+1) &= \mathbb{S}_{\tau\lambda}[\hat{a}^+(k)]
+				 & \leftarrow \text{"sparsify" the attacks}\\
+				 \hat{y}(k) &=G\hat{z}(k)
+			\end{align*} 			
+		\end{minipage}
+	};
+\end{tikzpicture}\\
+
+\noindent
+What are the differences from the previous version? The matrix $A$ is not the identity matrix, the state of the CPS \textbf{changes} $\Rightarrow$ in general $x(k) \ne x(k+1)$.
