@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.9)  19 APR 2024 22:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.9)  20 APR 2024 18:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -794,25 +794,113 @@ Underfull \hbox (badness 10000) in paragraph at lines 211--229
 
 [26]) [27]
 Chapter 5.
-(./1_Modeling/Ch5_DistributedAlgForCPSs.tex) [28
+(./1_Modeling/Ch5_DistributedAlgForCPSs.tex
+<images/Dist_Centr.png, id=135, 522.15076pt x 238.491pt>
+File: images/Dist_Centr.png Graphic file (type png)
+<use images/Dist_Centr.png>
+Package pdftex.def Info: images/Dist_Centr.png  used on input line 12.
+(pdftex.def)             Requested size: 313.29288pt x 143.09569pt.
 
-] [29
+Underfull \hbox (badness 10000) in paragraph at lines 22--24
+
+ []
+
+[28
+
+ <./images/Dist_Centr.png>]
+<images/Pros_Cons.png, id=140, 554.67226pt x 278.2395pt>
+File: images/Pros_Cons.png Graphic file (type png)
+<use images/Pros_Cons.png>
+Package pdftex.def Info: images/Pros_Cons.png  used on input line 27.
+(pdftex.def)             Requested size: 443.7384pt x 222.59189pt.
+<images/Graph.png, id=141, 156.585pt x 119.2455pt>
+File: images/Graph.png Graphic file (type png)
+<use images/Graph.png>
+Package pdftex.def Info: images/Graph.png  used on input line 45.
+(pdftex.def)             Requested size: 187.90105pt x 143.09386pt.
+ [29 <./images/Pros_Cons.png>] [30 <./images/Graph.png>]
+<images/Es_graph.png, id=151, 281.25075pt x 228.855pt>
+File: images/Es_graph.png Graphic file (type png)
+<use images/Es_graph.png>
+Package pdftex.def Info: images/Es_graph.png  used on input line 95.
+(pdftex.def)             Requested size: 196.87416pt x 160.1974pt.
+ [31 <./images/Es_graph.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 148--150
+
+ []
+
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 166--168
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 184--186
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 207--209
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 218--220
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 221--222
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--243
+
+ []
+
+[33]
+Underfull \hbox (badness 10000) in paragraph at lines 303--305
+
+ []
+
+[34]
+<images/Es1_gr.png, id=166, 317.988pt x 301.72725pt>
+File: images/Es1_gr.png Graphic file (type png)
+<use images/Es1_gr.png>
+Package pdftex.def Info: images/Es1_gr.png  used on input line 377.
+(pdftex.def)             Requested size: 190.79427pt x 181.03773pt.
+<images/Leader_follower.png, id=167, 284.262pt x 233.673pt>
+File: images/Leader_follower.png Graphic file (type png)
+<use images/Leader_follower.png>
+Package pdftex.def Info: images/Leader_follower.png  used on input line 393.
+(pdftex.def)             Requested size: 198.98203pt x 163.56998pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[35 <./images/Es1_gr.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 400--401
+
+ []
+
+) [36 <./images/Leader_follower.png>] [37
 
 ]
 Chapter 6.
-[30
+[38
 
 ]
 Chapter 7.
-[31
+[39
 
 ]
 Chapter 8.
-[32
+[40
 
 ]
 Chapter 9.
-[33
+[41
 
 ] (./main.aux)
  ***********
@@ -825,18 +913,18 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 18774 strings out of 474116
- 353046 string characters out of 5747718
- 1950190 words of memory out of 5000000
- 40736 multiletter control sequences out of 15000+600000
- 591261 words of font info for 108 fonts, out of 8000000 for 9000
+ 18837 strings out of 474116
+ 354430 string characters out of 5747718
+ 1964190 words of memory out of 5000000
+ 40791 multiletter control sequences out of 15000+600000
+ 594823 words of font info for 117 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 94i,15n,93p,2505b,740s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbi1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbi1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbi1728.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfit1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti2074.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on main.pdf (34 pages, 891538 bytes).
+ 94i,16n,93p,2505b,740s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbi1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbi1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbi1728.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfit1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti2074.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb>
+Output written on main.pdf (42 pages, 1081650 bytes).
 PDF statistics:
- 278 PDF objects out of 1000 (max. 8388607)
- 171 compressed objects within 2 object streams
+ 327 PDF objects out of 1000 (max. 8388607)
+ 196 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 38 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 68 words of extra memory for PDF output out of 10000 (max. 10000000)
 
