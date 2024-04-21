@@ -127,7 +127,7 @@ we can represent the system (\ref{eq: local_means}) in a matrix form as
 which summarize in a succinct way the Consensus algorithm where
 $$x(k)=\begin{pmatrix} x^{(1)}(k)\\x^{(2)}(k)\\\vdots\\x^{(q)}(k) \end{pmatrix}$$ 
 
-An important observation can be done on the matrix $Q$, each element $Q_{ij}\le 0$, if $Q_{ij}=0$ then there is no link between $i$ and $j$. Moreover for each row the sum of the element is equal to one, that is $\sum_{j=1}^q x_{ij}=1$, such a matrix is called \textbf{stochastic matrix} (or row stochastic). We can observe that the Consensus problem is an LTI DT dynamical system and its formulation is completely coincident with the formulation of \textbf{Page Rank algorithm} and \textbf{Markov Chains}. Now we are going to investigate the fact that the properties of the matrix $Q$ are very important.
+An important observation can be done on the matrix $Q$, each element $Q_{ij}\le 0$, if $Q_{ij}=0$ then there is no link between $i$ and $j$. Moreover for each row the sum of the element is equal to one, that is $\sum_{j=1}^q x_{ij}=1$ (convex combination), such a matrix is called \textbf{stochastic matrix} (or row stochastic). We can observe that the Consensus problem is an LTI DT dynamical system and its formulation is completely coincident with the formulation of \textbf{Page Rank algorithm} and \textbf{Markov Chains}. Now we are going to investigate the fact that the properties of the matrix $Q$ are very important.
 
 \subsection{Properties of stochastic matrices}
 The following properties are relevant for our purposes:
@@ -404,7 +404,8 @@ In order to conclude the explanation obout \textit{Consensus}, we give another i
 \node [mybox] (box){%
     \begin{minipage}{.96\textwidth}     %Larghezza del box
             {\large{
-                \textbf{Theorem}\\
+                \textbf{Theorem (convergence rate of Consensus)}\\
+
                 The convergence rate of the \textit{consensus algorithm} is determined by the \textbf{essential spectral radius} \texttt{esr}($Q$) which is the second \textbf{largest eigenvalue in magnitude}.
             }}
     \end{minipage}
@@ -412,10 +413,127 @@ In order to conclude the explanation obout \textit{Consensus}, we give another i
 \end{tikzpicture}%
 
 
+\section{Uses of the Consensus algorithm}
 
-\section{\noindent
-Uses of the Consensus algorithm}
+\subsection{Distributed Least-Squares (II) and Distributed Gradient Descent}
+The attempt which this paragraph try to meet is that of understand and formalize the problem of the \textbf{distributed least squares} just mentioned at the beginning, using also the notions introduced talking about Consensus algorithm.\\
+At first, in order to generalize the problem, let us consider the following \textit{convex optimization problem}
+\begin{equation}
+    \min_{x\in\mathbb{R}^n} F(x)
+\end{equation}
+where $F:\mathbb{R}^n\to\mathbb{R}$ is a \textbf{convex function}. If $F(x)$ is a the sum of several convex functions, it is called a \textbf{composite functional}
+\begin{equation}
+    F(x)=\sum_{i=1}^q {F_i(x)}
+\end{equation}
+In our case our functional $F(x)$ is the Least-Square functional which can be separated into different convex functionals, in the following way
+\begin{align}
+    F(x)=\Vert Cx-y \Vert_2^2=\sum_{i=1}^q (C_ix-y_i)^2\\
+    F_i(x):=(C_ix-y_i)^2
+\end{align}
 
-\subsection{Distributed Least-Squares (II)}
+\subsection{Problem $\mathcal{P}$: distributed minimization of composite functionals}
+We want to solve the problem
+\begin{equation*}
+    \min_{x\in\mathbb{R}^n}  \sum_{i=1}^q F_i(x) 
+\end{equation*}
+under the following assumption: 
+\begin{enumerate}
+    \item each agent knows its own part of the functional $F_i$
+    \item each agent $i$ collaborate and share its own local estimate $x^{(i)}\in\mathbb{R}^n$, while no information on $F_i$ is shared.
+    \item The local estimate is updated:
+    \begin{enumerate}
+        \item Using the functional $F_i$, by computing its \textbf{gradient}
+        \item By collecting the information from neighbours.
+    \end{enumerate}
+\end{enumerate}
+
+If $F(x)$ is convex and differentiable, we can apply the Gradient Descent algorithm in order to reach the \textbf{global minimum} under certain condition. The further step is decentralize the GD as follows:\\
+
+\hspace*{-5mm}
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{.96\textwidth}     %Larghezza del box
+            {\large{
+                {\color{red} \centering\textbf{DISTRIBUTED GRADIENT DESCENT (DGD)}\\}
+               
+
+                At each time k, the agent $i$ holds a local estimate $x^{i}(k)\in \mathbb{R}^n$\\
+                For $k=1,..., T_{max}$\\
+                For each agent $i=1,...,q$, the following steps  are performed:
+                \begin{enumerate}
+                    \item {\color{red}\textbf{Individual step}}: each agent computes its own gradient 
+                    ${u^{(i)}(k)=\nabla F_i(x^{(i)}(k))}$
+                    \item {\color{red}\textbf{Consensus step}}
+                    a \textbf{weighted local mean} of the neighbours' state is computed 
+                    \begin{equation*}
+                        \bar{x}^{(i)}(k)=\sum_{j=1}^q {Q_{i,j} x^{(j)}(k)}
+                    \end{equation*}
+                    \item {\color{red}\textbf{"Merge" step}}: $x^{(i)}(k+1)=\bar{x}^{(i)}(k)- \tau u^{(i)}(k)$
+                \end{enumerate}
+            }}
+    \end{minipage}
+};
+\end{tikzpicture}%
+
+\noindent
+\\The just presented definition was a theoretical one, but \textbf{in practice} between the first and the second step, there is a 2-phase \textbf{Communication step} in which each agent: {\color{red}(i)} broadcasts its own local estimate to the neighbourhood $\mathcal{N}_i$; {\color{red}(ii)} receives from the other agents the local estimate. Once this phase is concluded the \textbf{Consensus step} can be done. In real world applications, some communication delays ought to be taken into account, but for our purposes we are allowed to neglect them.
+
+{\color{blue}
+\subsubsection*{On the convergence of DGD}
+}
+
+The analysis of the convergence of \textbf{Distributed Gradient Descent} is quite challenging. In some papers the study on the convergence is done focusing the attention on the \textbf{stopped model}, that is, after a certain time $T_s$ the agents stop the computation of the gradient $\longrightarrow$ for $k>T_s$, the DGD consensus become a consensus algorithm. \\
+If $x^*= \text{arg}\min_{x\in\mathbb{R}^n} \sum_{i=1}^q F_i(x)$ is the optimal solution and $z^*$ is the solution obtaindd by DGD, then for certain constant $c$ we can have the \textbf{convergence} in the sense that
+\begin{equation*}
+    \bigg\vert \sum_{i=1}^q F_i(x^*) - \sum_{i=1}^q F_i(z^*)\bigg\vert < c
+\end{equation*}
 
 \subsection{Distributed ISTA (DISTA)}
+{\color{cyan}
+\textbf{What if we had the LASSO functional instead of the Least-Squares one?}
+}
+\\
+We are talking about the well-known least-squares functional to which an $\ell_1$-regularization is added. This results in the fact that the Distributed gradient descent is unusable the $\ell_1$-norm is not differentiable! 
+
+We can adapt the ISTA algorithm in a distributed context by doing some trivial modifications, the operator $\mathbb{S}_{\lambda\tau}$ (shrinkage and thresholding) has to be used. Recalling that we want to minimize the functional 
+\begin{equation*}
+    F(x)=\Vert y-Ax \Vert_2^2 + \lambda \Vert x \Vert_1
+\end{equation*}
+now is provided the algorithm to recover in a distributed way a sparse solution. 
+
+
+\hspace*{-5mm}
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{.96\textwidth}     %Larghezza del box
+        {\large{
+            {\color{red}  \centering\textbf{ 
+                 Distributed Iterative Soft Thresholding algorithm (DISTA)}
+            }
+            \begin{enumerate}
+                \item {\color{red} \textbf{Initialization}}: $x^{(i)}(0)\in \mathbb{R}^n$ (eg. $x^{(i)}(0)=0$) 
+                \item For $k=1,..., T_{max}$
+                \item For each agent $i=1,...,q$
+                {\color{blue}
+                \begin{equation*}
+                    x^{(i)}(k+1) = \mathbb{S}_{\lambda\tau} 
+                    \bigg[ 
+                        \sum_{i=1}^q Q_{i,j}x^{(j)}(k) +
+                        \tau A_i^T(y_i-A_ix^{(i)}(k))
+                    \bigg]
+                \end{equation*}
+                }
+                
+            \end{enumerate}
+        }}
+    \end{minipage}
+};
+\end{tikzpicture}%
+
+{\color{red}
+\subsubsection*{DISTA and Secure State Estimation of CPSs}
+}
+
+\noindent
+By doing the proper adjustments to the LASSO functional, we can use the DISTA algorithm for \textbf{RSS-fingerprinting localization} and in general for the problem of \textbf{Distributed Secure State Estimation of CPSs under attacks}. [It is important to note that that we are now in the \textbf{static setting} and so we assume that no observers are employed, the integration between decentralization and dynamic approach passing through the use of a \textit{sparse observer} is different and challenging!]  
+
