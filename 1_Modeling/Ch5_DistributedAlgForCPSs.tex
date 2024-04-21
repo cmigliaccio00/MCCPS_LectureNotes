@@ -1,11 +1,11 @@
 We have seen since the first chapter of these notes that \textbf{Cyber-physical systems} are sets of interconnected devices which
-take measurements from the physical world through the use of sensors. Such framework is \textbf{intrinsically distributed} even in the measurement stage that in the processing stages.
+take measurements from the physical world through the use of sensors. Such framework is \textbf{intrinsically distributed} even in both measurement  and processing stages.
 \section{Toward the Fusion Center removal}
 
 
 \noindent
 In the first part of this course we have seen that there was a 
-\textbf{fusion center} which collects and processes all the data (it can be for example a computer connected via Wi-Fi), another way to perform processing in the CPSs framework is the \textbf{distributed way}, then by using \textbf{distributed} (or \textbf{decentralized) algorithms}. The figure below shows the differences between a centralized and a distributed setting, respectively:
+\textbf{fusion center} which collected and processedS all the data (it can be for example a computer connected via Wi-Fi), another way to perform processing in the CPSs framework is the \textbf{distributed way}, then by using \textbf{distributed} (or \textbf{decentralized) algorithms}. The figure below shows the differences between a centralized and a distributed setting and respectively:
 
 \begin{figure}[h]
     \centering
@@ -13,13 +13,13 @@ In the first part of this course we have seen that there was a
     \caption{Centralized and Distributed processing}
 \end{figure}
 \begin{itemize}
-    \item In the first case all the data are conveyed to the fusion center to which is assigned the work of collecting and processing it; by using centralized algorithms some estimates can be given;
+    \item In the first case all the data are conveyed to the fusion center to which is assigned the work of collecting and processing it; by using centralized algorithms, some estimates can be given;
     \item In the second case of a \textbf{distributed} approach, the agents (or nodes)  cooperate by \textbf{exchanging information} in order to perform the elaboration.
 \end{itemize}
-In this last chapter of the 'Modeling' part, we are going toward the \textbf{removal of the Fusion Center} in order to understand the methods can be used for \textit{decentralized processing}.
+In this last chapter of the 'Modeling' part, we are going toward the \textbf{removal of the Fusion Center}, in order to understand the methods can be used for \textit{decentralized processing}.
 
 \subsection{Motivations} 
-The motivation that guide us to the decentralization, is quite practical: a large number of \textbf{cheap} interconnected devices which cooperate is better than few \textbf{expensive} devices. The adjectives \textbf{cheap/expensive} have to be declined in term of: computational capability, accuracy, power consumption and so on. Decentralized systems are: (i) \textbf{more robust} to failures, (ii) cheaper to maintain. However some \textbf{distributed algorithms} are needed.
+The motivation that guide us to the decentralization, is quite practical: a large number of \textbf{cheap} interconnected devices which cooperate is better than few \textbf{expensive} devices. The adjectives \textbf{cheap/expensive} have to be declined in term of: computational capability, accuracy, power consumption and so on. Decentralized systems are: (i) \textbf{more robust} to failures, (ii) cheaper to maintain. However, some \textbf{distributed algorithms} are needed.
 In the figure below are presented further information about advantages and disadvantages between the two approaches.\\
 
 \begin{figure}[h]
@@ -29,14 +29,14 @@ In the figure below are presented further information about advantages and disad
 \end{figure}
 
 
-It is quite common that in this field one talk about \textbf{multi-agent systems}. They are in a nutshell collections of devices that communicate to \textbf{achieve a common goal} (we will see that this concept is strongly connected to the  \textbf{consensus}). An \textbf{agent/node} is a device with other agents and takes autonomous decisions. 
+It is quite common that in this field one talk about \textbf{multi-agent systems}. They are in a nutshell collections of devices that communicate to \textbf{achieve a common goal} (we will see that this concept is strongly connected to the  \textbf{consensus}). An \textbf{agent/node} is a device that communicate with other agents and takes autonomous decisions. 
 
 \section{Distributed Least Squares (I)}
 As we understood is the problem of estimate the state $\tilde{x}\in \mathbb{R}^n$ given linear measurements of the type $y=C\tilde{x}+\eta$, where $\eta$ is a generic noise of measurement. We can use a Least-Square approach:
 \begin{equation}
     \min_{x \in \mathbb{R}^n} \Vert y-Cx \Vert_2^2
 \end{equation}
-The minimizer $x^*$ gives us the estimate of $\tilde{x}$. We have removed the Fusion Center(FC) we cannot run any algorithm (eg. Gradient Descent) to compute the estimate. In the scenario in which the agents are \textbf{sensors}, for example each sensor has its own $C_i$ (the $i-th$ row of the matrix C) and its own (distributed) measurement. It is remarkable that such quantities are not shared due to issues related to \textbf{privacy} and \textbf{storage capacity}! However another 'smaller' information can be exploited: the local estimate $x^{(i)} \in \mathbb{R}^n$ of the state. On the other hand if each sensor node $i$ solved the LS problem, the resulting estimated would have been very inaccurate. \textbf{Solution} $\Leftarrow$ we need \textbf{cooperation} among sensor nodes.
+The minimizer $x^*$ gives us the estimate of $\tilde{x}$. Since we have removed the Fusion Center(FC) we cannot run any algorithm (eg. Gradient Descent) to compute the estimate. In the scenario in which the agents are \textbf{sensors}, for example each sensor has its own $C_i$ (the $i-th$ row of the matrix C) and its own (distributed) measurement. It is remarkable that such quantities are not shared due to issues related to \textbf{privacy} and \textbf{storage capacity}! However another 'smaller' information can be exploited: the local estimate $x^{(i)} \in \mathbb{R}^n$ of the state. On the other hand if each sensor node $i$ had solved the LS problem, the resulting estimated would have been very inaccurate. \textbf{Solution} $\Leftarrow$ we need \textbf{cooperation} among sensor nodes.
 
 \subsection*{Math tool: Graphs}
 At this point, our next aim is to find a \textbf{model} to analyze the cooperation among agents. The best way is using a very powerful tool from the discrete Maths: Graphs. Essential definitions and features are given in this paragraph in order to continue the discussion. 
@@ -52,16 +52,16 @@ A \textbf{directed graph} $\mathcal{G}=(\mathcal{N}, \mathcal{E})$ is given by a
     \item A set of \textbf{nodes or vertices} $\mathcal{N}=\{1,2,..., q\}$
     \item A set of \textbf{links or edges} $\mathcal{E}\subseteq\mathcal{N} \times  \mathcal{N}.$
 \end{itemize}
-If $(i,j)\in\mathcal{E}$ we say that $(i,j)$ are neighbours. We define the \textbf{neighbourhood} of a nodes as the set of the nodes from which it receives information, the vertices from which derive the \textbf{incoming edges}. Just to give an example, the neighbourhood of 3 is the set $\mathcal{N}_3=\{1,2,4\}$. \\
+If $(i,j)\in\mathcal{E}$ we say that $(i,j)$ are neighbours. We define the \textbf{neighbourhood} of a nodes as the set of the nodes from which it receives information, or equivalently, the vertices from which derive the \textbf{incoming edges}. Just to give an example, the neighbourhood of 3 is the set $\mathcal{N}_3=\{1,2,4\}$. \\
 Our aims bring us to make a consideration if there is an edge between two nodes, this means that they communicate.\\
 Some other feature are relevant for our purposes: 
 \begin{itemize}
-    \item A graph is said to be \textbf{complete} if $\mathcal{E}=\mathcal{E} \times \mathcal{E}$; 
-    \item The graphs we will analyze are assumed to be \textbf{strongly connected} that is there is always a path between each pair of nodes; 
+    \item A graph is said to be \textbf{complete} if $\mathcal{E}=\mathcal{N} \times \mathcal{N}$; 
+    \item The graphs we will analyze are assumed to be \textbf{strongly connected}, that is there is always a path between each pair of nodes; 
 \end{itemize}
 
 \subsection{Introduction to Distributed Gradient Descent}
-For the aim of decentralizing the agents share their \textbf{local estimate} $x^{(i)}(k)$ which denotes the {\color{red} estimate of $\tilde{x}$ at time $k$}, let us assume for simplicity and without loss of generality, that such estimate is a \textbf{scalar}. \\
+For the aim of decentralizing the agents share their \textbf{local estimate}, $x^{(i)}(k)$, which denotes the {\color{red} estimate of $\tilde{x}$ at time $k$}, let us assume for simplicity and without loss of generality, that such estimate is a \textbf{scalar}. \\
 Once a generic sensor receives the estimate coming from its neighbourhood $\mathcal{N}_i$, it computes a \textbf{local mean}
 \begin{equation}
     \bar{x}^{(i)}(k) = \frac{1}{\vert \mathcal{N}_i \vert} \sum_{j\in\mathcal{N}_i} x^{(j)}(k)
@@ -73,11 +73,11 @@ where $\vert \mathcal{N}_i \vert$ is the cardinality of the neighbourhood. Despi
 
 This equation raises the problem known as the \textbf{Distributed Gradient Descent} which mixes: (i) \textbf{local} communication by performing the local mean, (ii) individual processing for the gradient step. By iterating this computation an estimate of the global state can be achieved. \\
 {\color{blue}Note that: we assume that in the neighbourhood of a vertex there is the vertex itself, as if there was a self-loop}.
-One can wonder: {\color{red} Why local mean and not another metric?} This observation gives the motivation to entry in more details talking about \textbf{Consensus algorithm}.
+One can wonder: {\color{red} Why local mean and not another metric?} This observation gives the motivation to entry more in details talking about \textbf{Consensus algorithm}.
 
 \section{The Consensus algorithm}
 \noindent
-The central point is: what should it happen if I iterate the local mean? Under some conditions for each node $i=1,...,q$
+The central point is: \textbf{what should it happen if I iterate the local mean?} Under some conditions for each node $i=1,...,q$,
 for a certain time $k\rightarrow\infty$
 \begin{align*}
     &x^{(1)}(k) \rightarrow x^*\\
@@ -89,7 +89,7 @@ Then, the nodes estimate the same global quantity $x^*$, they reach a \textbf{co
 \begin{equation}
     x^*=\frac{1}{q}\sum_{i=1}^q x^{(i)}(0)
 \end{equation}
-Let us consider an example for a graph of only three agents which is showed in the figure below (it has been used the \texttt{digraph} command of Matlab):
+Let us consider an example for a graph of only three agents which is showed in the figure below (it has been used the \texttt{digraph} command of MATLAB):
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.7]{images/Es_graph.png}
@@ -127,7 +127,8 @@ we can represent the system (\ref{eq: local_means}) in a matrix form as
 which summarize in a succinct way the Consensus algorithm where
 $$x(k)=\begin{pmatrix} x^{(1)}(k)\\x^{(2)}(k)\\\vdots\\x^{(q)}(k) \end{pmatrix}$$ 
 
-An important observation can be done on the matrix $Q$, each element $Q_{ij}\le 0$, if $Q_{ij}=0$ then there is no link between $i$ and $j$. Moreover for each row the sum of the element is equal to one, that is $\sum_{j=1}^q x_{ij}=1$ (convex combination), such a matrix is called \textbf{stochastic matrix} (or row stochastic). We can observe that the Consensus problem is an LTI DT dynamical system and its formulation is completely coincident with the formulation of \textbf{Page Rank algorithm} and \textbf{Markov Chains}. Now we are going to investigate the fact that the properties of the matrix $Q$ are very important.
+An important observation can be done on the matrix $Q$, each element $Q_{ij}\le 0$, if $Q_{ij}=0$ then there is no link between $i$ and $j$. Moreover for each row the sum of the element is equal to one, that is $\sum_{j=1}^q x_{ij}=1$ (convex combination), such a matrix is called \textbf{stochastic matrix} (or row stochastic).\\
+We can observe that the Consensus problem is an LTI DT dynamical system and its formulation is completely coincident with the formulation of \textbf{Page Rank algorithm} and \textbf{Markov Chains}. Now we are going to investigate the fact that the properties of the matrix $Q$ are very important.
 
 \subsection{Properties of stochastic matrices}
 The following properties are relevant for our purposes:
@@ -377,8 +378,8 @@ The associated graph is the following:
     \includegraphics[scale=0.6]{images/Es1_gr.png}
 \end{figure}
 \noindent
-We can note that it is \textbf{strongly connected}, we can give as a result that 
-\textbf{each stochastic matrix related to a strongly connected graph reaches consensus}, for the properties which are required from the Perron-Frobenius theorem.
+We can note that it is \textbf{strongly connected}. The following result is given:
+\textbf{each stochastic matrix related to a strongly connected graph reaches consensus} (for the properties which are required from the Perron-Frobenius theorem).
 
 {\color{blue}\subsubsection{Leader-follower}}
 From the \textbf{Example 2} we had the following matrix:
@@ -387,7 +388,7 @@ From the \textbf{Example 2} we had the following matrix:
         0.1&0.2&0.7\\1&0&0\\0&0&1
     \end{pmatrix}
 \end{equation*}
-From the limit we can note that the node 3 does not change its own state and the consensus is a global mean which depends only on its state, for this reason can be recognized as a \textbf{leader agent} that propagates its own information without receiving nothing. The other agents are the \textbf{follower nodes}. The associated graph shows the exposed property:
+From the limit we can note that the node (3) does not change its own state and the consensus is a global mean which depends only on its state, for this reason can be recognized as a \textbf{leader agent} that propagates its own information without receiving nothing. The other agents are instead the \textbf{follower nodes}. The associated graph shows the exposed property:
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.7]{images/Leader_follower.png}
@@ -416,7 +417,8 @@ In order to conclude the explanation obout \textit{Consensus}, we give another i
 \section{Uses of the Consensus algorithm}
 
 \subsection{Distributed Least-Squares (II) and Distributed Gradient Descent}
-The attempt which this paragraph try to meet is that of understand and formalize the problem of the \textbf{distributed least squares} just mentioned at the beginning, using also the notions introduced talking about Consensus algorithm.\\
+The attempt which this paragraph try to meet is that of understanding and formalizing the problem of the \textbf{distributed least squares} - just mentioned at the beginning - using also the notions introduced talking about Consensus algorithm.\\
+
 At first, in order to generalize the problem, let us consider the following \textit{convex optimization problem}
 \begin{equation}
     \min_{x\in\mathbb{R}^n} F(x)
@@ -425,7 +427,7 @@ where $F:\mathbb{R}^n\to\mathbb{R}$ is a \textbf{convex function}. If $F(x)$ is 
 \begin{equation}
     F(x)=\sum_{i=1}^q {F_i(x)}
 \end{equation}
-In our case our functional $F(x)$ is the Least-Square functional which can be separated into different convex functionals, in the following way
+In our case, our functional $F(x)$ is the Least-Square one, which can be separated into different convex functionals, in the following way
 \begin{align}
     F(x)=\Vert Cx-y \Vert_2^2=\sum_{i=1}^q (C_ix-y_i)^2\\
     F_i(x):=(C_ix-y_i)^2
@@ -447,7 +449,8 @@ under the following assumption:
     \end{enumerate}
 \end{enumerate}
 
-If $F(x)$ is convex and differentiable, we can apply the Gradient Descent algorithm in order to reach the \textbf{global minimum} under certain condition. The further step is decentralize the GD as follows:\\
+\noindent
+If $F(x)$ is convex and differentiable, one can apply the Gradient Descent algorithm in order to reach the \textbf{global minimum}, under certain condition. The further step is to decentralize the GD as follows:\\
 
 \hspace*{-5mm}
 \begin{tikzpicture}
@@ -481,8 +484,8 @@ If $F(x)$ is convex and differentiable, we can apply the Gradient Descent algori
 {\color{blue}
 \subsubsection*{On the convergence of DGD}
 }
-
-The analysis of the convergence of \textbf{Distributed Gradient Descent} is quite challenging. In some papers the study on the convergence is done focusing the attention on the \textbf{stopped model}, that is, after a certain time $T_s$ the agents stop the computation of the gradient $\longrightarrow$ for $k>T_s$, the DGD consensus become a consensus algorithm. \\
+\noindent
+The analysis of the convergence of \textbf{Distributed Gradient Descent} is quite challenging. In some papers the study on the convergence is done focusing the attention on the \textbf{stopped model}, that is, after a certain time $T_s$ the agents stop the computation of the gradient $\longrightarrow$ for $k>T_s$, the DGD becomes a consensus algorithm. \\
 If $x^*= \text{arg}\min_{x\in\mathbb{R}^n} \sum_{i=1}^q F_i(x)$ is the optimal solution and $z^*$ is the solution obtaindd by DGD, then for certain constant $c$ we can have the \textbf{convergence} in the sense that
 \begin{equation*}
     \bigg\vert \sum_{i=1}^q F_i(x^*) - \sum_{i=1}^q F_i(z^*)\bigg\vert < c
@@ -493,7 +496,7 @@ If $x^*= \text{arg}\min_{x\in\mathbb{R}^n} \sum_{i=1}^q F_i(x)$ is the optimal s
 \textbf{What if we had the LASSO functional instead of the Least-Squares one?}
 }
 \\
-We are talking about the well-known least-squares functional to which an $\ell_1$-regularization is added. This results in the fact that the Distributed gradient descent is unusable the $\ell_1$-norm is not differentiable! 
+We are talking about the well-known least-squares functional to which an $\ell_1$-regularization is added. This results in the fact that the Distributed gradient descent is unusable: the $\ell_1$-norm is not differentiable! 
 
 We can adapt the ISTA algorithm in a distributed context by doing some trivial modifications, the operator $\mathbb{S}_{\lambda\tau}$ (shrinkage and thresholding) has to be used. Recalling that we want to minimize the functional 
 \begin{equation*}
