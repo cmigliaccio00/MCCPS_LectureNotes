@@ -1,11 +1,11 @@
 # Fdb version 4
-["pdflatex"] 1713702736.13573 "c:/Users/carlo/Desktop/PoliTO/[LM-32]_Laurea Magistrale/IAnno__2023_2024/2__[01UDSOV]_Modeling_and_control_of_cyberphysical_systems/MCCPS_LectureNotes/main.tex" "main.pdf" "main" 1713702739.31608 0
+["pdflatex"] 1714216647.30509 "c:/Users/carlo/Desktop/PoliTO/[LM-32]_Laurea Magistrale/IAnno__2023_2024/2__[01UDSOV]_Modeling_and_control_of_cyberphysical_systems/MCCPS_LectureNotes/main.tex" "main.pdf" "main" 1714216650.63169 0
   "1_Modeling/Ch1_Intro.tex" 1712502254 5539 da3c1e19386b90d17db3ebfb7143fb7d ""
   "1_Modeling/Ch2_SecureEstimation.tex" 1712509677 32921 7d64f702e42799550c377d401dd511f5 ""
   "1_Modeling/Ch3_Localization.tex" 1712568757 9641 697771ea98ddb5f182acdc875d305d1c ""
   "1_Modeling/Ch4_DynamicSSE.tex" 1713097687 12250 a250f863c34df13a95ab60080ed25430 ""
   "1_Modeling/Ch5_DistributedAlgForCPSs.tex" 1713702734 28235 adf3c55d50cf51e9914af5941bba7b80 ""
-  "c:/Users/carlo/Desktop/PoliTO/[LM-32]_Laurea Magistrale/IAnno__2023_2024/2__[01UDSOV]_Modeling_and_control_of_cyberphysical_systems/MCCPS_LectureNotes/main.tex" 1713560015 1865 6e8862599d399be5fa672a78b313f4a6 ""
+  "c:/Users/carlo/Desktop/PoliTO/[LM-32]_Laurea Magistrale/IAnno__2023_2024/2__[01UDSOV]_Modeling_and_control_of_cyberphysical_systems/MCCPS_LectureNotes/main.tex" 1714216646 1888 09165226a31f8f24416e9f61c0636277 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1709974823 2971 def0b6c1f0b107b3b936def894055589 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1709974823 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1709976195 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -207,6 +207,8 @@
   "c:/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty" 1709976531 4023 293ea1c16429fc0c4cf605f4da1791a9 ""
   "c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def" 1709977308 30006 3d512c0edd558928ddea1690180ef77e ""
   "c:/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg" 1709977451 678 4792914a8f45be57bb98413425e4c7af ""
+  "c:/texlive/2023/texmf-dist/tex/latex/mathtools/mathtools.sty" 1709978009 62269 5c1837a5bc5db4c0d255eedc225ca44b ""
+  "c:/texlive/2023/texmf-dist/tex/latex/mathtools/mhsetup.sty" 1709978009 5582 a43dedf8e5ec418356f1e9dfe5d29fc3 ""
   "c:/texlive/2023/texmf-dist/tex/latex/mfirstuc/mfirstuc.sty" 1709978129 18649 0158a8d684645a30f5c01e471f44e851 ""
   "c:/texlive/2023/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty" 1709978972 1090 bae35ef70b3168089ef166db3e66f5b2 ""
   "c:/texlive/2023/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty" 1709978972 373 00b204b1d7d095b892ad31a7494b0373 ""
@@ -221,6 +223,7 @@
   "c:/texlive/2023/texmf-dist/tex/latex/substr/substr.sty" 1709980391 5724 d3505925e87b345f11a5f17d58550dea ""
   "c:/texlive/2023/texmf-dist/tex/latex/supertabular/supertabular.sty" 1709980406 15405 31e477e611bb77761a134e5593e8119d ""
   "c:/texlive/2023/texmf-dist/tex/latex/titlesec/titlesec.sty" 1709980973 48766 0b93839be28e9744a24c45075c75b2e2 ""
+  "c:/texlive/2023/texmf-dist/tex/latex/tools/calc.sty" 1709981052 10214 547fd4d29642cb7c80bf54b49d447f01 ""
   "c:/texlive/2023/texmf-dist/tex/latex/tools/longtable.sty" 1709981052 12935 94a3291359b5f73ff1b19345a6983105 ""
   "c:/texlive/2023/texmf-dist/tex/latex/wrapfig/wrapfig.sty" 1709981630 26220 3701aebf80ccdef248c0c20dd062fea9 ""
   "c:/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty" 1709981662 55487 80a65caedd3722f4c20a14a69e785d8f ""
@@ -241,9 +244,9 @@
   "images/RSS-cells.png" 1712502254 8723 c6c224b1dc12a1c4b0c96d177d1e265c ""
   "images/RSS-training.png" 1712502254 20239 de7727189b74a56093e2de02ffc90b9c ""
   "images/Sparsity.png" 1712502254 47632 7dd144283983476f3357c44b91a4e4f2 ""
-  "main.aux" 1713702738 11490 bb6eb1792e1e614fd28d596ffe4bd0d8 "pdflatex"
-  "main.tex" 1713560015 1865 6e8862599d399be5fa672a78b313f4a6 ""
-  "main.toc" 1713702738 5225 6a9c7e6d1f2f186b92d576b7aef0751b "pdflatex"
+  "main.aux" 1714216650 11490 bb6eb1792e1e614fd28d596ffe4bd0d8 "pdflatex"
+  "main.tex" 1714216646 1888 09165226a31f8f24416e9f61c0636277 ""
+  "main.toc" 1714216650 5225 6a9c7e6d1f2f186b92d576b7aef0751b "pdflatex"
   (generated)
   "main.aux"
   "main.log"

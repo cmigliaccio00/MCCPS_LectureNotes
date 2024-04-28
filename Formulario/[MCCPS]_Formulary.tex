@@ -1,0 +1,242 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{wrapfig}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{glossaries}
+
+
+%\titlespacing*{\title}{0pt}{20pt}{200pt}
+%\titlespacing*{\date}{0pt}{0ex}{0ex}
+%\titlespacing*{\author}{0pt}{0ex}{0ex}
+
+\titlespacing*{\section}{0pt}{0ex}{0ex}
+\titlespacing*{\subsection}{0pt}{0ex}{0ex}
+%\titlespacing\author{0pt}{0pt}{0pt}
+%\titlespacing\date{0pt}{0pt}{0pt}
+%\pagestyle{headings}
+%\thispagestyle{headings}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage[a4paper, top=1cm, left=1.5cm, bottom=1.5cm, right=1.5cm]{geometry}
+
+\title{
+    \vspace{-1.5cm}
+    \textbf{
+        \large{
+            \underline{MODELING AND CONTROL OF CYBER-PHYSICAL SYSTEMS}
+   \vspace{-10ex}
+        }
+    }
+}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace{0.15cm}
+\section{Modeling of Cyber-Physical Systems}
+
+%============================   1   ===================
+{\color{red} \subsection*{Mathematical modeling for CPS}}
+CPSs $\overset{\text{set of devices that}}{\longrightarrow}$ 
+$\begin{cases}
+    \text{inter-communicate}\\
+    \text{compute}\\
+    \text{interact with the physical-world}
+\end{cases} 
+    $ $\overset{\text{math models}}{\Longrightarrow}$
+$
+\begin{cases}
+    \text{Hybrid systems {\small(dynamic switching)}}\\
+    \text{CPSs under attacks (\textbf{Part I})}\\ 
+    \text{Multi-agent systems (\textbf{Part II})}
+\end{cases}
+$\\
+\textbf{CPS under attacks (on the sensors)} $\longrightarrow$ 
+$\begin{cases}
+    x(k+1)=Ax(k)\\
+    y(k)=Cx(k)+a(k)
+\end{cases}$  no $u(k)$, no $b(k)$(actuators)
+$A \in \mathbb{R}^{n,n}, \quad C \in \mathbb{R}^{q,n} \quad 
+a(k)\in \mathbb{R}^q, \quad q=\text{number of sensors}$\\
+
+%============================= 2 =====================
+{\color{red} \subsection*{Secure State Estimation of CPSs \quad\quad {\small{[FUSION CENTER]}}}} 
+\underline{\textbf{Without attacks}} Observability $\iff$ $rank(\mathcal{O}_n)=n$, $\mathcal{O}_n=[C \ CA \ ... \ CA^{n-1}]^T$ (observability matrix) $\Rightarrow$ $x(0)$ found by pseudo-inversion of the system ${y=\mathcal{O}_nx(0)} \longrightarrow x(0)=\mathcal{O}_n^{\dagger} \ y$\\
+\noindent
+\underline{\textbf{Presence of attacks}} no model for the attacks $\Longrightarrow$ $\begin{cases}
+    y(0)=Cx(0)+a(0)\\
+    y(1)=CAx(0)+a(1)\\
+    \vdots \quad \quad \quad \vdots\\
+    y(T)=CA^{T-1}x(0)+a(T)
+\end{cases}$ {\small($\infty$ solutions)}\\
+\vspace{0.2cm}\noindent
+\textit{\textbf{Assumption (sparsity)}} $\Vert a \Vert_0 \le h \ll q$ (by adding this the problem may have a \textbf{unique solution})\\
+\noindent
+{\color{blue} \textbf{Under which conditions can we solve the problem?} 
+$\rightarrow$ Simplification of the problem}\\
+$A=I_n$ (the system is static) $\longrightarrow$ $x(k+1)=x(k)=x$ 
+$\overset{\text{problem becomes}}{\longrightarrow}$
+$y=Cx+a \quad \text{s.t.} \ \Vert a \Vert_0 \le h$ \\
+\textbf{Prop(Correctability)} (resilience to h attacks) $\iff \forall z \in \mathbb{R}^n, \  \Vert \mathcal{O}_Tz\Vert_0>2h$\\
+\textbf{A necessary condition for correctability...} {\small{
+    $q\ge 2h+n $ $\begin{cases}
+        \text{large $q$ is not sufficient}\\
+        \text{a minimum $q$ is required}
+    \end{cases}$
+}}\\
+
+\vspace{-0.2cm}
+\noindent
+{\color{blue}\textbf{How can I solve the problem?} $\rightarrow$ Reformulation of the problem}
+\begin{enumerate}
+    \itemsep-0.2em
+    \item[0.] if \textbf{Correctable}, the Decoder
+    {\color{red} $\mathcal{D}_0 \doteq \underset{x\in\mathbb{R}^n,a\in\mathbb{R}^q}{\min} \Vert a \Vert_0 \ \text{s.t.} \ y=Cx+a $ }corrects $h$ attacks; 
+    \item $y=Cx+a+\text{noise} \longrightarrow y\sim Cx+a \longrightarrow \underset{x\in\mathbb{R}^n}{\min} \frac{1}{2}\Vert y-Cx \Vert_2^2$ (Least-Squares problem)
+    \item $\ell_0$-norm $\Rightarrow$ bad function $\underset{\text{convex relaxation}}{\Longrightarrow}$ $\ell_1$-norm {\small(best convex approximation)$\leftarrow$ \textbf{promotes sparsity}}
+\end{enumerate}
+\vspace{-0.5cm}
+(0)+(1)+(2) $\Longrightarrow$ 
+{\color{red}
+$z=\underset{x\in\mathbb{R}^n, a\in\mathbb{R}^q}{\text{argmin}}
+\frac{1}{2} \Vert y-Gz \Vert_2^2 + \lambda \Vert a \Vert_1 \quad
+G=(C \quad I), \ z=\begin{pmatrix} x\\a \end{pmatrix}
+$
+}  $\Longleftarrow \begin{cases}
+        \text{convex and continuous}\\
+        \text{\textbf{unconstrained}}\\
+        \text{non differentiable in 0}
+\end{cases}$\\
+\textbf{(Partial) LASSO} $\overset{\text{solved by using}}{\longrightarrow}$ $x(k+1)=\mathbb{S}_{\lambda\tau}[x(k)+\tau C^T(y-Cx(k))]$ (\textbf{IST} algorithm), {\small{$k\rightarrow$  iteration}} \\$\Longleftarrow$
+derived from the \textbf{alternating minimization of the surrogate functional} $\mathcal{R}(x,b)$\\
+In general for CPSs $x$ is not sparse $\longrightarrow$ $\Lambda=(0,0,...,0,\lambda, \lambda,...,\lambda)$, $\lambda_i=0, \ i=1,...,n$\\
+
+%------------------------------------------------------------
+{\color{red}\subsection*{(Indoor) Localization by RSS-fingerprinting \quad\quad {\small{[FUSION CENTER]}}}}
+\begin{enumerate}
+    \itemsep0em
+    \item[0.] \textbf{Init}: cell-grid discretization ($p$=\# of cells, $q$=\# of sensors, $N_t$=\# of targets)
+    \item \textbf{Training phase}: Dictionary $D\in\mathbb{R}^{q,n}$ is built. Target in each cell + measurement
+    \item \textbf{Runtime phase}: each sensor takes $y_i$ $\longrightarrow$ \textbf{Where are the targets?} $y=Dx+\eta, \ x_i\in\{0,1\}$\\
+    $x_i=1 \rightarrow $ in the $i$-th cell there is a target $\Longrightarrow$ $\underset{x\in\{0,1\}^p}{\min} \Vert y-Dx \Vert_2^2$ (mixed-integer $\rightarrow$ NP-Hard)
+    \vspace{-0.3cm}
+    \begin{enumerate}
+        \itemsep0em
+        \item $x\in\{0,1\}^p$ $\underset{\text{relaxation}}{\longrightarrow}$ $x\in\mathbb{R}^p$ so that the problem is feasible; 
+        \item $N_t \ll p \Rightarrow$ seeking of a \textbf{sparse solution} $\Longrightarrow$ LASSO  
+    \end{enumerate} 
+\end{enumerate}
+
+\noindent
+\textbf{(\#1) Localization without attacks} 
+$x^*=\underset{x\in\mathbb{R}^p}{\min} \frac{1}{2} \Vert y-Dx \Vert_2^2 + \lambda \Vert x \Vert_1$ (ISTA can be used)\\
+\noindent
+\textbf{(\#2) Localization under sensor attacks}
+$x^*=\underset{z\in\mathbb{R}^p}{\min} \frac{1}{2} \Vert y-Gz \Vert_2^2 + \lambda \Vert z \Vert_1, \ G=(D \ I), \ z=(x \ a)^T$\\
+
+{\color{red} \subsection*{Dynamic Secure State Estimation of CPSs \quad\quad {\small{[FUSION CENTER]}}}}
+\noindent
+In general {\large{$A\ne I_n$}} $\Longrightarrow$ The system is moving and the static-batch approach is too slow\\
+{\color{blue}\textbf{How to dynamically estimate the state (attack-free)?} }
+\\ $\underset{\color{red}\text{(copy of the system + correction) }}{\textbf{Luemberger Observer}}$ $\underset{\text{def}}{\Longrightarrow}$ $\begin{cases}
+    \hat{x}(k+1)=A\hat{x}(k)-L[\hat{y}(k)-y(k)]\\
+    \hat{y}(k)=C\hat{x}(k)
+\end{cases}$ $\underset{e(k)=\hat{x}-x}{\longrightarrow}$  $e(k+1)=(A-LC)e(k)$\\
+$L$ is the \textbf{observer-gain matrix}, chosen such that $e(k+1)$ is asymptotically stable $\underset{k\to\infty}{\longrightarrow} \hat{x}(k)=x(k)$\\
+\textbf{Online Gradient Descent (OGD)}  $L_g=\tau AC^T, \quad \tau \le \Vert C \Vert_2^{-2}$\\
+
+\vspace{-0.3cm}\noindent
+{\color{blue}{\textbf{What about the attacks?}}}\\
+\textbf{In general} CPSs under attacks are \textbf{not observable} $\longrightarrow$ NO Luemberger Observer, NO OGD\\
+
+\vspace{-0.1cm}
+\noindent
+\underline{\textbf{SPARSE OBSERVER}} $\overunderset{k \ \text{is the time}}{\text{given} \ \hat{z} \ \text{and}\ y=Gz}{\Longrightarrow}$ $\begin{cases}
+    \hat{z}^+(k)=A\hat{z}^(k)-\tau A G^T[G\hat{z}(k)-y(k)] &      \text{estimation (OGD)}\\
+    \hat{x}(k+1) = A \hat{x}^{+}(k) & \text{prediction}\\
+    \hat{a}(k+1) = \mathbb{S}_{\lambda\tau}[\hat{a}^+(k)] & \text{sparsify the attacks} \\
+    \hat{y}(k)=G\hat{z}(k) & \text{measurement}
+\end{cases}$\\
+
+\noindent
+\textsc{Application: Localization under sensor attacks (with moving targets)}\\
+
+{\color{red} \subsection*{Distributed Secure State Estimation of CPSs \quad\quad {\small{[NO FUSION CENTER]}}}} 
+
+\noindent
+\textbf{Multi-agent system} set of systems which cooperate in order to achieve a \textbf{common goal}.\\
+\textbf{Agents} $\underset{\text{exchange}}{\Longrightarrow}$ \textbf{local estimate} $x^{(i)}(k)$ $\underset{\text{to the}}{\longrightarrow}$ neighbourhood\\
+\textbf{Graph} $\mathcal{G}=(\mathcal{N},\mathcal{E})$ $\rightarrow$ math tool to model the inter-communication. It is made up of:
+\begin{itemize}
+    \itemsep-0.3em
+    \item A set $\mathcal{N}$ of agents or nodes or vertices; 
+    \item A set $\mathcal{E}\subseteq\mathcal{N}\times\mathcal{N}$ of links or edges
+\end{itemize}
+\vspace{-0.4em}
+\textbf{Neighbourhood} $\mathcal{N}_i$ $\rightarrow$ set of the nodes from which receives information.\\
+\textbf{Local mean} {\normalsize{$\bar{x}^{(i)}(k)=\frac{1}{\vert \mathcal{N}_i \vert} \underset{j\in\mathcal{N}_i}{\sum}{x^{(j)}(k)}$}}\\
+\underline{\large\textbf{CONSENSUS}} {\large{$x(k+1)=Qx(k)$}} $\longrightarrow$ the system organized how $Q$ dictates, achieves a \textbf{global common decision} if $Q$ has got some properties.\\
+\textbf{Stochastic matrix} $Q$ is stochastic $\iff \forall i=1,...,q \quad \overunderset{q}{j=1}{\sum} Q_{ij}=1$ \textbf{(row stochastic)}\\
+\textbf{Doubly stochastic matrix} $Q$ is doubly stochastic $\iff$ is symmetric (undirected graphs)\\
+\textbf{Some important results}:
+\vspace{-0.2cm}
+\begin{itemize}
+    \itemsep-0.3em
+    \item[$\longrightarrow$] $\lambda_1=\lambda_{PF} > \vert \lambda_2 \vert > ... > \vert \lambda_q \vert \Longrightarrow \underset{k\to\infty}{\lim} x(k)=\alpha\mathbf{1}$ (suff. conditions for Consensus)  
+    \item[$\longrightarrow$]  $\lambda_{PF} > \vert \lambda_2 \vert > ... > \vert \lambda_q \vert, $ $Q$ doubly stochastic $ \underset{\text{average 
+    consensus}}{\Longrightarrow} \underset{k\to\infty}{\lim} x(k)=\alpha\mathbf{1}, \ \alpha=\frac{1}{q}\overunderset{q}{j=1}{\sum}x^{(j)}(0)$  
+    \item[$\longrightarrow$] \textbf{Convergence rate} of the consensus algorithm  $\underset{\text{is related to}}{\longrightarrow}$ \texttt{esr}(Q)=$\lambda_2$ 
+    \item[$\longrightarrow$] If $Q^T$=Adjacency matrix describes a strongly connected graph $\Longrightarrow$ $Q$ achieves consensus.
+\end{itemize}
+\noindent
+{\underline{\normalsize\textbf{APPLICATIONS of CONSENSUS ALGORITHM}}}\\
+\textbf{\textsf{Distributed Least-Squares}} $\underset{\text{minimize}}{\longrightarrow}$ $F(x)=\Vert y-Ax \Vert_2^2$, each sensor has $\begin{cases}
+    y_i & \text{its own \textbf{measurement}}\\
+    A_i & i-\text{th row of the matrix A}
+\end{cases}$ \\
+$\Longrightarrow$ 
+$\overset{\textsf{\color{blue}the solution can be found by using...}}{\textbf{Distributed Gradient Descent (DGD)}}$
+    $\underset{\color{red}\forall i\in\{1,...,q\}}{\longrightarrow}$
+  $ \begin{cases}
+    \bar{x}^{(i)}(k)=\sum_{j=1}^{q} Q_{ij}x^{(j)}(k) \\
+    x^{(i)}(k+1)=\underbrace{\bar{x}^{(i)}(k)}_\textsf{\color{red} \textbf{consensus} step}-\underbrace{\tau\nabla F(x^{(i)}(k))}_\textsf{\color{red}\textbf{gradient} step}
+\end{cases}$
+
+\noindent
+\textbf{\textsf{Distributed LASSO}}$\underset{\text{minimize}}{\longrightarrow}$ $F(x)=\Vert y-Ax \Vert_2^2 + \lambda \Vert x \Vert_1$\\
+$\Longrightarrow$ 
+$\overset{\textsf{\color{blue}the solution can be found by using...}}{\textbf{Distributed ISTA(DISTA)}}$
+$\underset{\color{red}\forall i\in\{1,...,q\}}{\longrightarrow}$
+{\large{
+    $x^{(i)}(k+1)=\mathbb{S}_{\lambda\tau}\big[ 
+        \bar{x}^{(i)}(k) +
+        \tau A_i^T(y-A_ix^{i}(k))    
+    \big]$
+}}\\
+
+\noindent
+{\small{
+    \textbf{Note that...} for these algorithms proofs of convergence have been provided.
+}}
+
+
+%----------------------------------------------------------------
+\begin{center}
+    \rule{300pt}{.2pt}
+    \vspace{-1ex}
+\end{center}
+
+
+%\section{Control of Cyber Physical Systems}
+%\subsection*{Agents' experimental modeling (System Identification) }
+%\subsection*{Modeling of the communication network}
+%\subsection*{State Variable FeedBack control (SVFB)}
+%\subsection*{Formation control}
+
+\end{document}
