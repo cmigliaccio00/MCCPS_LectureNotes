@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.9)  27 APR 2024 13:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.9)  5 MAY 2024 20:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -627,7 +627,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--4
 
  []
 
-<images/CPS.png, id=28, 410.7345pt x 271.61475pt>
+<images/CPS.png, id=29, 410.7345pt x 271.61475pt>
 File: images/CPS.png Graphic file (type png)
 <use images/CPS.png>
 Package pdftex.def Info: images/CPS.png  used on input line 15.
@@ -677,7 +677,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 262--264
  []
 
 [12]
-<images/Sparsity.png, id=77, 428.802pt x 199.947pt>
+<images/Sparsity.png, id=78, 428.802pt x 199.947pt>
 File: images/Sparsity.png Graphic file (type png)
 <use images/Sparsity.png>
 Package pdftex.def Info: images/Sparsity.png  used on input line 321.
@@ -735,7 +735,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 513--515
 [17]) [18]
 Chapter 3.
 (./1_Modeling/Ch3_Localization.tex
-<images/RSS-cells.png, id=101, 242.70676pt x 155.3805pt>
+<images/RSS-cells.png, id=102, 242.70676pt x 155.3805pt>
 File: images/RSS-cells.png Graphic file (type png)
 <use images/RSS-cells.png>
 Package pdftex.def Info: images/RSS-cells.png  used on input line 24.
@@ -747,12 +747,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [19
 
 ]
-<images/RSS-training.png, id=105, 532.99126pt x 142.131pt>
+<images/RSS-training.png, id=106, 532.99126pt x 142.131pt>
 File: images/RSS-training.png Graphic file (type png)
 <use images/RSS-training.png>
 Package pdftex.def Info: images/RSS-training.png  used on input line 36.
 (pdftex.def)             Requested size: 426.39359pt x 113.70493pt.
-<images/RSS-Runtime.png, id=106, 239.6955pt x 145.7445pt>
+<images/RSS-Runtime.png, id=107, 239.6955pt x 145.7445pt>
 File: images/RSS-Runtime.png Graphic file (type png)
 <use images/RSS-Runtime.png>
 Package pdftex.def Info: images/RSS-Runtime.png  used on input line 46.
@@ -823,7 +823,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 211--229
 [26]) [27]
 Chapter 5.
 (./1_Modeling/Ch5_DistributedAlgForCPSs.tex
-<images/Dist_Centr.png, id=135, 522.15076pt x 238.491pt>
+<images/Dist_Centr.png, id=136, 522.15076pt x 238.491pt>
 File: images/Dist_Centr.png Graphic file (type png)
 <use images/Dist_Centr.png>
 Package pdftex.def Info: images/Dist_Centr.png  used on input line 12.
@@ -836,18 +836,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 22--24
 [28
 
  <./images/Dist_Centr.png>]
-<images/Pros_Cons.png, id=140, 554.67226pt x 278.2395pt>
+<images/Pros_Cons.png, id=141, 554.67226pt x 278.2395pt>
 File: images/Pros_Cons.png Graphic file (type png)
 <use images/Pros_Cons.png>
 Package pdftex.def Info: images/Pros_Cons.png  used on input line 27.
 (pdftex.def)             Requested size: 443.7384pt x 222.59189pt.
-<images/Graph.png, id=141, 156.585pt x 119.2455pt>
+<images/Graph.png, id=142, 156.585pt x 119.2455pt>
 File: images/Graph.png Graphic file (type png)
 <use images/Graph.png>
 Package pdftex.def Info: images/Graph.png  used on input line 45.
 (pdftex.def)             Requested size: 187.90105pt x 143.09386pt.
  [29 <./images/Pros_Cons.png>] [30 <./images/Graph.png>]
-<images/Es_graph.png, id=151, 281.25075pt x 228.855pt>
+<images/Es_graph.png, id=152, 281.25075pt x 228.855pt>
 File: images/Es_graph.png Graphic file (type png)
 <use images/Es_graph.png>
 Package pdftex.def Info: images/Es_graph.png  used on input line 95.
@@ -893,13 +893,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 304--306
  []
 
 [34]
-<images/Es1_gr.png, id=166, 317.988pt x 301.72725pt>
+<images/Es1_gr.png, id=167, 317.988pt x 301.72725pt>
 File: images/Es1_gr.png Graphic file (type png)
 <use images/Es1_gr.png>
 Package pdftex.def Info: images/Es1_gr.png  used on input line 378.
 (pdftex.def)             Requested size: 190.79427pt x 181.03773pt.
  [35 <./images/Es1_gr.png>]
-<images/Leader_follower.png, id=171, 284.262pt x 233.673pt>
+<images/Leader_follower.png, id=172, 284.262pt x 233.673pt>
 File: images/Leader_follower.png Graphic file (type png)
 <use images/Leader_follower.png>
 Package pdftex.def Info: images/Leader_follower.png  used on input line 394.
@@ -933,19 +933,56 @@ Underfull \hbox (badness 10000) in paragraph at lines 467--469
 
 ]
 Chapter 6.
-[41
+(./2_Control/Ch6_Intro.tex
+<images/MultiAgent.png, id=191, 295.1025pt x 263.7855pt>
+File: images/MultiAgent.png Graphic file (type png)
+<use images/MultiAgent.png>
+Package pdftex.def Info: images/MultiAgent.png  used on input line 6.
+(pdftex.def)             Requested size: 177.06285pt x 158.2725pt.
+ [41
 
-]
+ <./images/MultiAgent.png>]
+<images/state_feedback.png, id=196, 364.36125pt x 118.041pt>
+File: images/state_feedback.png Graphic file (type png)
+<use images/state_feedback.png>
+Package pdftex.def Info: images/state_feedback.png  used on input line 67.
+(pdftex.def)             Requested size: 291.48938pt x 94.4329pt.
+ [42 <./images/state_feedback.png>]
+<images/observer.png, id=202, 313.17pt x 93.951pt>
+File: images/observer.png Graphic file (type png)
+<use images/observer.png>
+Package pdftex.def Info: images/observer.png  used on input line 115.
+(pdftex.def)             Requested size: 250.53633pt x 75.1609pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 118--120
+
+ []
+
+[43 <./images/Observer.png>] [44]) [45]
 Chapter 7.
-[42
+(./2_Control/Ch7_SysID.tex [46
 
 ]
+LaTeX Font Info:    Trying to load font information for T1+cmss on input line 53.
+ (c:/texlive/2023/texmf-dist/tex/latex/base/t1cmss.fd
+File: t1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+<images/EIV.png, id=216, 290.88675pt x 148.75575pt>
+File: images/EIV.png Graphic file (type png)
+<use images/EIV.png>
+Package pdftex.def Info: images/EIV.png  used on input line 85.
+(pdftex.def)             Requested size: 223.98347pt x 114.54227pt.
+ [47 <./images/EIV.png>] [48] [49] [50]) [51]
 Chapter 8.
-[43
+[52
 
 ]
 Chapter 9.
-[44
+[53
+
+]
+Chapter 10.
+[54
 
 ] (./main.aux)
  ***********
@@ -958,18 +995,18 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 19459 strings out of 474116
- 365813 string characters out of 5747718
+ 19550 strings out of 474116
+ 368053 string characters out of 5747718
  1959190 words of memory out of 5000000
- 41403 multiletter control sequences out of 15000+600000
- 594823 words of font info for 117 fonts, out of 8000000 for 9000
+ 41476 multiletter control sequences out of 15000+600000
+ 600813 words of font info for 126 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 94i,16n,93p,2505b,749s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbi1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbi1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbi1728.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfit1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti2074.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb>
-Output written on main.pdf (45 pages, 1092066 bytes).
+ 94i,17n,93p,2505b,775s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbi1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbi1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbi1728.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfit1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti2074.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb>
+Output written on main.pdf (55 pages, 1277499 bytes).
 PDF statistics:
- 338 PDF objects out of 1000 (max. 8388607)
- 203 compressed objects within 3 object streams
+ 403 PDF objects out of 1000 (max. 8388607)
+ 240 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 68 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 88 words of extra memory for PDF output out of 10000 (max. 10000000)
 
