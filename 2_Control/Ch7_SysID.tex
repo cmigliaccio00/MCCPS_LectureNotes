@@ -156,7 +156,7 @@ Before start, we have to collect a sufficient number of samples in order to comp
     \theta_4u(6)+\theta_5u(5)
 \end{align*}
 that it can be rewritten in matrix form as
-\begin{equation}
+\begin{equation} \label{eq:sys_eq}
     \underbrace{\begin{bmatrix}
         y(3)\\y(4)\\\vdots\\y(H)
     \end{bmatrix}}_{y} 
@@ -260,6 +260,63 @@ Conclusion:
 \begin{quotation}
     If we use a single sample, we will obtain for sure a wrong estimate of the single parameter $\theta$ $\to$ a \textbf{wrong model}. We need more samples and we will look for a $\theta$ which is providing the \textbf{best-fitting} of the data.
 \end{quotation}
+
+\noindent
+In order to exit from this \textbf{wrong situation}, we have to collect for sure more \textit{input-output} pairs in a number $H \gg 2n+1$, where $2n+1$ given a system of order $n$ is the number of parameters to estimate $\to$ the output of our system identification procedure. However at this point we cannot apply anymore the equation (\ref{eq: inversion}) because the matrix $A$ becomes a tall matrix, which cannot be inverted! We use the Moore-Penrose pseudo inverse defined as
+\begin{equation*}
+    A^\dagger = (A^TA)^{-1}A^T
+\end{equation*}
+and we can solve the problem by simply substituting the inverse with the pseudoinverse:
+\begin{equation} \label{eq: LS_solution}
+    \hat{\theta} = A^\dagger y = (A^TA)^{-1}A^T y
+\end{equation}
+This is the solution of the Least-Squares problem (LS) to the equation (\ref{eq:sys_eq})
+\begin{equation}
+    \hat{\theta} = \text{arg}\min_\theta \Vert A\theta-y\Vert_2^2
+\end{equation}
+In this way $\hat{\theta}$, in the context of System Identification, is the LS estimate of the \textit{parameter vector}.\\
+This formulation of the problem has interesting properties if some hypothesis are satisfied:
+\begin{enumerate}
+    \item The error apper in the equation as an additive term $e(k)$ called the \textbf{equation error}; 
+    \item The $e(k) k=1,...,H$ represents a white gaussian noise, that is the samples are \textit{indipendent and identically distributed} (iid).
+\end{enumerate}
+If such assumption are fullfilled, then
+{\large{
+    \begin{equation}
+        \lim_{H\to\infty} \mathbb{E}\big[\hat{\theta}\big] = \theta
+    \end{equation}
+}}
+Where $\theta$ is the \textbf{true parameter vector}. The Least Square approach, no matter what are the dimension of the matrix is \textbf{very fast}, moreover there is also an \textit{online recursive way} to compute them.\\
+At this point we are assuming that:
+\begin{align*}
+    &y(k)=-\theta_1y(k-1)-\theta_2y(k-2)-...-\theta_ny(k-n)+\theta_{n+1}u(k)+...+\theta_{n+m+1}u(k-m) + e(k) \iff \\
+    &y(k)=-\theta_1 q^{-1}y(k)-\theta_2 q^{-2}y(k)-...-\theta_n q^{-n}y(k) + \theta_{n+1}u(k) + ... + \theta_{n+m+1} q^{-(n+m+1)} u(k) + e(k) \iff \\
+    &y(k) \big(1+\theta_1 q^{-1}+...+\theta_n q^{-n} \big) = u(k) \big( \theta_{n+1} q^{n+1}+...+\theta_{n+m+1}  q^{n+m+1} \big) + e(k) \iff \\
+    &y(k) D_d(q^{-1})=u(k)\ N_d(q^{-1}) + e(k) \iff 
+    y(k)=\frac{N_d(q^{-1})}{D_d({q^{-1}})} u(k) + \frac{1}{D_d(q^{-1})}e(k) \quad _\blacksquare
+\end{align*}
+This last step we did tells us that the output of the system \textbf{to be identified} depends:
+\begin{enumerate}
+    \item On the transfer function to be identified $\frac{N_d(q^{-1})}{D_d({q^{-1}})}$ (this is ok);
+    \item On the error filtered by the transfer function $\frac{1}{D_d(q^{-1})}$ which depends directly on something to be identified  yet!
+\end{enumerate}
+
+\noindent
+\textbf{Conclusion}
+The Least-Squares estimator used to solve the SysID problem has some advantages: fast convergence and simplicity, however in order to be used requires \textbf{strong assumption} on the error, moreover even if this can be obtained, having an acceptable estimate requires the collection of a big quantity of data. 
+\begin{center}
+    \color{red}
+    We need an approach where:
+    \begin{enumerate}
+        \item A \textbf{small amount of data} is required; 
+        \item \textbf{mild assumption} on the error has to be done.
+    \end{enumerate}
+    These needs leads to the \textbf{Set-Membership System Identification} theory.
+\end{center}
+
+
+  
+
 
 
 

@@ -454,6 +454,18 @@ INPUT ./images/EIV.png
 INPUT ./images/EIV.png
 INPUT ./images/EIV.png
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/ecbx0700.tfm
+INPUT ./2_Control/Ch8_SMId.tex
+INPUT ./2_Control/Ch8_SMId.tex
+INPUT 2_Control/Ch8_SMId.tex
+INPUT ./images/EIV.png
+INPUT ./images/EIV.png
+INPUT ./images/EIV.png
+INPUT ./images/EIV.png
+INPUT ./images/OE.png
+INPUT ./images/OE.png
+INPUT ./images/OE.png
+INPUT ./images/OE.png
+INPUT ./images/OE.png
 INPUT main.aux
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
@@ -468,6 +480,7 @@ INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb

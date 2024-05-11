@@ -71,6 +71,16 @@
 \contentsline {subsection}{\numberline {7.2.3}Black-box models vs Gray-box models}{49}{}%
 \contentsline {subsection}{\numberline {7.2.4}The role of the a-priori information}{50}{}%
 \contentsline {subsection}{\numberline {7.2.5}From the ideal situation to the real experiment}{51}{}%
-\contentsline {chapter}{\numberline {8}Set-membership System Identification}{52}{}%
-\contentsline {chapter}{\numberline {9}State variable feedback control (SVFB)}{53}{}%
-\contentsline {chapter}{\numberline {10}Formation contorl}{54}{}%
+\contentsline {chapter}{\numberline {8}Set-membership System Identification}{53}{}%
+\contentsline {section}{\numberline {8.1}Main ingredients}{53}{}%
+\contentsline {section}{\numberline {8.2}Noise structures}{54}{}%
+\contentsline {subsection}{\numberline {8.2.1}Error-In-Variable set-up (EIV)}{54}{}%
+\contentsline {subsection}{\numberline {8.2.2}Output-Error set-up(OE)}{54}{}%
+\contentsline {section}{\numberline {8.3}Feasible Parameter Set (FPS)}{55}{}%
+\contentsline {subsection}{\numberline {8.3.1}Example \#1}{55}{}%
+\contentsline {subsubsection}{Ingredients}{55}{}%
+\contentsline {subsubsection}{Feasible Parameter Set Computation}{56}{}%
+\contentsline {section}{\numberline {8.4}Extended Feasible Parameter Set (EFPS)}{56}{}%
+\contentsline {section}{\numberline {8.5}Convex relaxation for PUIs computation}{56}{}%
+\contentsline {chapter}{\numberline {9}State variable feedback control (SVFB)}{57}{}%
+\contentsline {chapter}{\numberline {10}Formation contorl}{58}{}%
