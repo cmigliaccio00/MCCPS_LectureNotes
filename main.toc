@@ -1,86 +1,90 @@
-\contentsline {part}{I\hspace {1em}Modeling of Cyber-Physical systems}{3}{}%
-\contentsline {chapter}{\numberline {1}Introduction}{4}{}%
-\contentsline {section}{\numberline {1.1}Some definitions}{4}{}%
-\contentsline {section}{\numberline {1.2}Some examples of CPS}{5}{}%
-\contentsline {section}{\numberline {1.3}Enabling Technologies and related problems}{5}{}%
-\contentsline {section}{\numberline {1.4}Mathematical models for CPS}{5}{}%
-\contentsline {chapter}{\numberline {2}Secure estimation of CPSs state under adversarial attacks}{7}{}%
-\contentsline {section}{\numberline {2.1}State estimation and Observabilty}{7}{}%
-\contentsline {section}{\numberline {2.2}Secure state estimation}{8}{}%
-\contentsline {section}{\numberline {2.3}Well-Position of the problem (Static case)}{9}{}%
-\contentsline {subsection}{\numberline {2.3.1}Some examples}{11}{}%
-\contentsline {subsubsection}{Example 0: a "naive" example}{11}{}%
-\contentsline {subsubsection}{Example 1: add more sensors (increase q)}{11}{}%
-\contentsline {subsubsection}{Example 2: more mixed measurements}{12}{}%
-\contentsline {subsubsection}{Example 3: linearly independent measurements}{12}{}%
-\contentsline {subsection}{\numberline {2.3.2}A necessary condition for well-position}{12}{}%
-\contentsline {section}{\numberline {2.4}Reformulation of $y=Cx+a \hskip 1em\relax \textrm {s.t.} \hskip 1em\relax \lVert a \rVert _0 \le h$}{12}{}%
-\contentsline {subsection}{\numberline {2.4.1}Why $\ell _1$-regularization promotes sparsity?}{13}{}%
-\contentsline {subsection}{\numberline {2.4.2}Some observations}{14}{}%
-\contentsline {subsubsection}{The problem has a connection with LASSO}{14}{}%
-\contentsline {subsubsection}{The problem has a connection with "Compressed Sensing"}{14}{}%
-\contentsline {section}{\numberline {2.5}IST: an algorithm for LASSO}{15}{}%
-\contentsline {subsection}{\numberline {2.5.1}Derivation of IST Algorithm}{15}{}%
-\contentsline {subsubsection}{First step: minimizing with respect to $b$}{16}{}%
-\contentsline {subsubsection}{Second step: minimizing with respect to $x$}{17}{}%
-\contentsline {subsection}{\numberline {2.5.2}Curiosity}{18}{}%
-\contentsline {subsection}{\numberline {2.5.3}Application of ISTA on CPS framework}{18}{}%
-\contentsline {chapter}{\numberline {3}Localization by RSS fingerprinting}{19}{}%
-\contentsline {section}{\numberline {3.1}Introduction}{19}{}%
-\contentsline {section}{\numberline {3.2}RSS-fingerprinting: general description }{19}{}%
-\contentsline {subsection}{\numberline {3.2.1}(Phase 0) Initialization }{19}{}%
-\contentsline {subsection}{\numberline {3.2.2}(Phase 1) Training phase}{20}{}%
-\contentsline {subsection}{\numberline {3.2.3}(Phase 2): Runtime phase}{20}{}%
-\contentsline {section}{\numberline {3.3}Localization under sparse sensor attacks}{21}{}%
-\contentsline {section}{\numberline {3.4}Other approaches to Localization}{22}{}%
-\contentsline {subsection}{\numberline {3.4.1}k-Nearest Neighbour (K-NN)}{22}{}%
-\contentsline {subsection}{\numberline {3.4.2}Linear Regression (noise-free case)}{22}{}%
-\contentsline {section}{\numberline {3.5}Some comments on the setting}{22}{}%
-\contentsline {chapter}{\numberline {4}Dynamic Secure State Estimation of CPSs under adversarial attacks}{23}{}%
-\contentsline {section}{\numberline {4.1}Review of Luemberger Observer}{23}{}%
-\contentsline {section}{\numberline {4.2}State estimation by Least-squares approach}{24}{}%
-\contentsline {section}{\numberline {4.3}Dynamic SSE with constant attack}{25}{}%
-\contentsline {chapter}{\numberline {5}Distributed Consensus based algorithms for CPSs}{28}{}%
-\contentsline {section}{\numberline {5.1}Toward the Fusion Center removal}{28}{}%
-\contentsline {subsection}{\numberline {5.1.1}Motivations}{29}{}%
-\contentsline {section}{\numberline {5.2}Distributed Least Squares (I)}{29}{}%
-\contentsline {subsection}{\numberline {5.2.1}Introduction to Distributed Gradient Descent}{30}{}%
-\contentsline {section}{\numberline {5.3}The Consensus algorithm}{31}{}%
-\contentsline {subsection}{\numberline {5.3.1}Properties of stochastic matrices}{32}{}%
-\contentsline {subsection}{\numberline {5.3.2}On the connectivity}{35}{}%
-\contentsline {subsubsection}{Strongly connected graphs}{35}{}%
-\contentsline {subsubsection}{Leader-follower}{36}{}%
-\contentsline {subsubsection}{The importance of $Q_{ij}$ magnitude}{36}{}%
-\contentsline {subsection}{\numberline {5.3.3}Convergence rate of the Consensus algorithm}{36}{}%
-\contentsline {section}{\numberline {5.4}Uses of the Consensus algorithm}{37}{}%
-\contentsline {subsection}{\numberline {5.4.1}Distributed Least-Squares (II) and Distributed Gradient Descent}{37}{}%
-\contentsline {subsection}{\numberline {5.4.2}Problem $\mathcal {P}$: distributed minimization of composite functionals}{37}{}%
-\contentsline {subsection}{\numberline {5.4.3}Distributed ISTA (DISTA)}{38}{}%
-\contentsline {part}{II\hspace {1em}Control of Cyber-Physical systems}{40}{}%
-\contentsline {chapter}{\numberline {6}Introduction to Control of CPSs}{41}{}%
-\contentsline {section}{\numberline {6.1}CPSs as Multi-agent systems}{41}{}%
-\contentsline {section}{\numberline {6.2}Review of LTI systems structural properties}{42}{}%
-\contentsline {subsection}{\numberline {6.2.1}Controllabilty of an LTI system}{42}{}%
-\contentsline {subsection}{\numberline {6.2.2}Observability of an LTI system}{43}{}%
-\contentsline {section}{\numberline {6.3}The communication network through a digraph}{45}{}%
-\contentsline {chapter}{\numberline {7}Experimental modeling of the agents: System identification}{46}{}%
-\contentsline {section}{\numberline {7.1}What kind of model?}{46}{}%
-\contentsline {section}{\numberline {7.2}System Identification: black-box general setting}{47}{}%
-\contentsline {subsection}{\numberline {7.2.1}Example (noise free): 2$\mathbf {^{\text {nd}}}$ order LTI system}{48}{}%
-\contentsline {subsection}{\numberline {7.2.2}Estimation of the parameters}{49}{}%
-\contentsline {subsection}{\numberline {7.2.3}Black-box models vs Gray-box models}{49}{}%
-\contentsline {subsection}{\numberline {7.2.4}The role of the a-priori information}{50}{}%
-\contentsline {subsection}{\numberline {7.2.5}From the ideal situation to the real experiment}{51}{}%
-\contentsline {chapter}{\numberline {8}Set-membership System Identification}{53}{}%
-\contentsline {section}{\numberline {8.1}Main ingredients}{53}{}%
-\contentsline {section}{\numberline {8.2}Noise structures}{54}{}%
-\contentsline {subsection}{\numberline {8.2.1}Error-In-Variable set-up (EIV)}{54}{}%
-\contentsline {subsection}{\numberline {8.2.2}Output-Error set-up(OE)}{54}{}%
-\contentsline {section}{\numberline {8.3}Feasible Parameter Set (FPS)}{55}{}%
-\contentsline {subsection}{\numberline {8.3.1}Example \#1}{55}{}%
-\contentsline {subsubsection}{Ingredients}{55}{}%
-\contentsline {subsubsection}{Feasible Parameter Set Computation}{56}{}%
-\contentsline {section}{\numberline {8.4}Extended Feasible Parameter Set (EFPS)}{56}{}%
-\contentsline {section}{\numberline {8.5}Convex relaxation for PUIs computation}{56}{}%
-\contentsline {chapter}{\numberline {9}State variable feedback control (SVFB)}{57}{}%
-\contentsline {chapter}{\numberline {10}Formation contorl}{58}{}%
+\contentsline {part}{I\hspace {1em}Modeling of Cyber-Physical systems}{3}{part.1}%
+\contentsline {chapter}{\numberline {1}Introduction}{4}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Some definitions}{4}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Some examples of CPS}{5}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Enabling Technologies and related problems}{5}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Mathematical models for CPS}{5}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Secure estimation of CPSs state under adversarial attacks}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}State estimation and Observabilty}{7}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Secure state estimation}{8}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Well-Position of the problem (Static case)}{9}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Some examples}{11}{subsection.2.3.1}%
+\contentsline {subsubsection}{Example 0: a "naive" example}{11}{subsubsection*.2}%
+\contentsline {subsubsection}{Example 1: add more sensors (increase q)}{11}{subsubsection*.3}%
+\contentsline {subsubsection}{Example 2: more mixed measurements}{12}{subsubsection*.4}%
+\contentsline {subsubsection}{Example 3: linearly independent measurements}{12}{subsubsection*.5}%
+\contentsline {subsection}{\numberline {2.3.2}A necessary condition for well-position}{12}{subsection.2.3.2}%
+\contentsline {section}{\numberline {2.4}Reformulation of $y=Cx+a \hskip 1em\relax \textrm {s.t.} \hskip 1em\relax \lVert a \rVert _0 \le h$}{12}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Why $\ell _1$-regularization promotes sparsity?}{13}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Some observations}{14}{subsection.2.4.2}%
+\contentsline {subsubsection}{The problem has a connection with LASSO}{14}{subsubsection*.6}%
+\contentsline {subsubsection}{The problem has a connection with "Compressed Sensing"}{14}{subsubsection*.7}%
+\contentsline {section}{\numberline {2.5}IST: an algorithm for LASSO}{15}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Derivation of IST Algorithm}{15}{subsection.2.5.1}%
+\contentsline {subsubsection}{First step: minimizing with respect to $b$}{16}{subsubsection*.8}%
+\contentsline {subsubsection}{Second step: minimizing with respect to $x$}{17}{subsubsection*.9}%
+\contentsline {subsection}{\numberline {2.5.2}Curiosity}{18}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Application of ISTA on CPS framework}{18}{subsection.2.5.3}%
+\contentsline {chapter}{\numberline {3}Localization by RSS fingerprinting}{19}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduction}{19}{section.3.1}%
+\contentsline {section}{\numberline {3.2}RSS-fingerprinting: general description }{19}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}(Phase 0) Initialization }{19}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}(Phase 1) Training phase}{20}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}(Phase 2): Runtime phase}{20}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Localization under sparse sensor attacks}{21}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Other approaches to Localization}{22}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}k-Nearest Neighbour (K-NN)}{22}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Linear Regression (noise-free case)}{22}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}Some comments on the setting}{22}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Dynamic Secure State Estimation of CPSs under adversarial attacks}{23}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Review of Luemberger Observer}{23}{section.4.1}%
+\contentsline {section}{\numberline {4.2}State estimation by Least-squares approach}{24}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Dynamic SSE with constant attack}{25}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Distributed Consensus based algorithms for CPSs}{28}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Toward the Fusion Center removal}{28}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Motivations}{29}{subsection.5.1.1}%
+\contentsline {section}{\numberline {5.2}Distributed Least Squares (I)}{29}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Introduction to Distributed Gradient Descent}{30}{subsection.5.2.1}%
+\contentsline {section}{\numberline {5.3}The Consensus algorithm}{31}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Properties of stochastic matrices}{32}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}On the connectivity}{35}{subsection.5.3.2}%
+\contentsline {subsubsection}{Strongly connected graphs}{35}{subsubsection*.10}%
+\contentsline {subsubsection}{Leader-follower}{36}{subsubsection*.11}%
+\contentsline {subsubsection}{The importance of $Q_{ij}$ magnitude}{36}{subsubsection*.12}%
+\contentsline {subsection}{\numberline {5.3.3}Convergence rate of the Consensus algorithm}{36}{subsection.5.3.3}%
+\contentsline {section}{\numberline {5.4}Uses of the Consensus algorithm}{37}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Distributed Least-Squares (II) and Distributed Gradient Descent}{37}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Problem $\mathcal {P}$: distributed minimization of composite functionals}{37}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Distributed ISTA (DISTA)}{38}{subsection.5.4.3}%
+\contentsline {part}{II\hspace {1em}Control of Cyber-Physical systems}{40}{part.2}%
+\contentsline {chapter}{\numberline {6}Introduction to Control of CPSs}{41}{chapter.6}%
+\contentsline {section}{\numberline {6.1}CPSs as Multi-agent systems}{41}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Review of LTI systems structural properties}{42}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Controllabilty of an LTI system}{42}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Observability of an LTI system}{43}{subsection.6.2.2}%
+\contentsline {section}{\numberline {6.3}The communication network through a digraph}{45}{section.6.3}%
+\contentsline {chapter}{\numberline {7}Experimental modeling of the agents: System identification}{46}{chapter.7}%
+\contentsline {section}{\numberline {7.1}What kind of model?}{46}{section.7.1}%
+\contentsline {section}{\numberline {7.2}System Identification: black-box general setting}{47}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Example (noise free): 2$\mathbf {^{\text {nd}}}$ order LTI system}{48}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Estimation of the parameters}{49}{subsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.2.3}Black-box models vs Gray-box models}{49}{subsection.7.2.3}%
+\contentsline {subsection}{\numberline {7.2.4}The role of the a-priori information}{50}{subsection.7.2.4}%
+\contentsline {subsection}{\numberline {7.2.5}From the ideal situation to the real experiment}{51}{subsection.7.2.5}%
+\contentsline {chapter}{\numberline {8}Set-membership System Identification}{53}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Main ingredients}{53}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Noise structures}{54}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Error-In-Variable set-up (EIV)}{54}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}Output-Error set-up(OE)}{54}{subsection.8.2.2}%
+\contentsline {section}{\numberline {8.3}Feasible Parameter Set (FPS)}{55}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Example \#1}{55}{subsection.8.3.1}%
+\contentsline {subsubsection}{Ingredients}{55}{subsubsection*.13}%
+\contentsline {subsubsection}{Feasible Parameter Set Computation}{56}{subsubsection*.14}%
+\contentsline {section}{\numberline {8.4}Extended Feasible Parameter Set (EFPS)}{56}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}Example: First order system}{57}{subsection.8.4.1}%
+\contentsline {section}{\numberline {8.5}Convex relaxation for PUIs computation}{58}{section.8.5}%
+\contentsline {subsection}{\numberline {8.5.1}Solution of a generic POP using \texttt {SparsePOP}}{60}{subsection.8.5.1}%
+\contentsline {subsubsection}{Example \#1 (general polynomial optimization problem)}{60}{subsubsection*.15}%
+\contentsline {subsubsection}{Example \#2 (PUIs computation) ...\texttt {todo!()}}{61}{subsubsection*.16}%
+\contentsline {chapter}{\numberline {9}State variable feedback control (SVFB)}{62}{chapter.9}%
+\contentsline {chapter}{\numberline {10}Formation contorl}{63}{chapter.10}%
