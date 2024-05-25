@@ -668,6 +668,16 @@ In order to retrieve the solution of the optimization problem:
     \item \texttt{POP.xVectL} contains the \textbf{optimizer} (minimizer in our case); 
 \end{itemize}
 
+\noindent 
+At the end of this procedure as we said:
+\begin{itemize}
+    \item The problem is in the correct form in the case that we want to control the system by using a robust control techniques, first among the others $\mathcal{H}_\infty$
+    \footnote[6]{In particular we can use the $\mathcal{H_\infty}$ technique with \textbf{structured uncertainty}}; 
+    \item If we need to pick a single model, we can select the \textbf{central estimate} for each parameter such that $$
+    \theta_i^c = \frac{\underline{\theta}_i + \overline{\theta}_i}{2}
+    $$
+\end{itemize}
+
 
 
 
