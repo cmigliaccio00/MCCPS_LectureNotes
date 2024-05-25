@@ -318,9 +318,9 @@ It can be proved that when $\delta\to\infty$ a \textbf{convex hull} is obtained 
 \noindent
 The relaxation order has to have a minimum value which is:
 \begin{equation}
-        \delta_{min} = \max \bigg[
-            \frac{deg(f_k(x))}{2}
-    \bigg]
+        \delta_{min} = \ceil[\bigg]{ \max \bigg(
+            \frac{\deg{f_k(x)}}{2}
+    \bigg)}
 \end{equation}
 where $f_k(x)$ are the constraints of the optimization problem. 
 For any relaxation order $\delta$ which satisfies the constraint above, which is $\delta \ge \delta_{min}$ it is guaranteed that:
@@ -428,6 +428,8 @@ Following the fashion of the previous step, let us define \texttt{support} and \
     \end{bmatrix}
 \end{equation*}
 
+%Add an example with an equality constraint (see the SparsePOP User Manual!)
+
 \noindent
 \textbf{\textsf{3) Lower and upper bounds}}\\
 The lower and upper bounds are indicated by employing two vectors called \texttt{lbd} and \texttt{ubd}, where respectively \texttt{lbd}=[\texttt{lb}$_i$,...,\texttt{lb}$_\textsf{dimVar}$], \texttt{ubd}=[\texttt{ub}$_i$,...,\texttt{ub}$_\textsf{dimVar}$]. In our example:
@@ -441,7 +443,231 @@ The lower and upper bounds are indicated by employing two vectors called \texttt
 \end{equation*}
 Where there are no upper and/or lower bound on a variable, mathematically speaking you should write $-\infty \le x_i \le +\infty$. Obviously in MATLAB we cannot use infinite values, for this reason we express this concept by introducing a very large number in the vector at the positions in which such bounds are required.
 
-\subsubsection{Example \#2 (PUIs computation) ...\texttt{todo!()}}
+
+
+\subsubsection{Example \#2 (PUIs computation)}
+Let us consider an example in which the optimization problems we want to solve comes from a \textit{Set-Membership system identification problem}. In particular our aim is to obtain a mathematical model for the system characterized by the following properties.\\
+
+\noindent
+\textbf{First ingredient: A-priori information} on the \textit{system}:
+\begin{itemize}
+    \itemsep0em
+    \item Linear Time Invariant system;
+    \item First order system;
+\end{itemize}
+For sure we can assume that such a system it can be described by the transfer function:
+\begin{equation*}
+    G(z)  = \frac{\theta_2 z + \theta_3} {z+\theta_1}
+\end{equation*}
+By doing simple calculation we obtain: 
+\begin{align*}
+    &y(z)  = \frac{\theta_2 z + \theta_3} {z+\theta_1} = 
+            \frac{\theta_2 + \theta_3 z^{-1}} {1+\theta_1 z^{-1}} u(z) \to
+            y(k) = \frac{\theta_2 + \theta_3 q^{-1}} {1+\theta_1 q^{-1}} u(k) \to \\
+    & y(k)(1+\theta_1 q^{-1}) = (\theta_2 + \theta_3 q^{-1})u(k) \to 
+    y(k) + \theta_1 y(k-1) = \theta_2 u(k) + \theta_3 u(k-1)
+\end{align*}
+and finally:
+\begin{equation} \label{eq:final_eq}
+    y(k) + \theta_1 y(k-1)- \theta_2 u(k) - \theta_3 u(k-1)=0
+\end{equation}
+
+\noindent 
+\textbf{Second ingredient: A-priori information} on the \textit{noise}:
+\begin{itemize}
+    \itemsep0em
+    \item The input $u(k)$ is perfectly known;
+    \item The output $y(k)$ is corrupted by noise obtaining $\tilde{y}(k) = y(k) + \eta(k)$
+    \item The noise $\eta$ is bounded for each $k$
+\end{itemize}
+
+\noindent
+\textbf{Third ingredient: A-posteriori information}: Input/Output data experimentally collected.\\
+After having collected the I/O data we can exploit them to rewrite the equation (\ref{eq:final_eq}):
+\begin{equation*}
+    \tilde{y}(k)-\eta(k) + \theta_1 \tilde{y}(k-1) - \theta_1 \eta(k-1)  - \theta_2 u(k) - \theta_3 u(k-1)=0, \quad k=2,...,H
+\end{equation*}
+where $H$ is the number of collected I/O pairs.\\
+
+\noindent
+By using a-priori and a-posteriori information we can formulate the \textit{EFPS} as:
+{\large{
+    \begin{align*}
+        \mathcal{D}_{\theta, \eta} = \{
+            \theta \in \mathbb{R}^3, \eta \in \mathbb{R}^H &: \ \tilde{y}(k)-\eta(k) + \theta_1 \tilde{y}(k-1) - \theta_1 \eta(k-1) + \\
+            &- \theta_2 u(k) - \theta_3 u(k-1)=0, \quad k=2,...,H\\
+            &-\Delta_\eta \le \eta(k) \le  \Delta_\eta, \quad k=1,...,H
+        \}
+    \end{align*}
+}}
+Now for each $\theta_i, \ i=1,...,3$ we have to compute the Parameter uncertainty Intervals, then for each parameter we have to solve the following (non-convex) optimization problems:\\
+\textbf{1) Computation of $\underline{\theta}_i$}
+\begin{equation*}  \label{eq:P1} \tag{\textsf{OP1}}
+    \begin{aligned}
+        &\min_{\theta, \eta \in \mathcal{D}_{\theta, \eta}} \theta_i \qquad i=1,...3\\
+    & \text{subject to:}  \\
+    &  \tilde{y}(k)-\eta(k) + \theta_1 \tilde{y}(k-1)+ \\
+    &- \theta_1 \eta(k-1)  - \theta_2 u(k) - \theta_3 u(k-1)=0, \quad k=2,...,H\\
+    &-\Delta_\eta \le \eta(k) \le  \Delta_\eta, \quad k=1,...,H
+    \end{aligned}
+\end{equation*}
+
+\noindent
+\textbf{2) Computation of $\overline{\theta}_i$}\footnote[1]{Remember that 
+    $$
+        \max_{\theta, \eta  \in \mathcal{D}_{\theta, \eta}} \theta_i = \min_{\theta, \eta  \in \mathcal{D}_{\theta, \eta}} -\theta_i
+    $$
+}
+\begin{equation*}  \label{eq:P2} \tag{\textsf{OP2}}
+    \begin{aligned}
+        &\min_{\theta, \eta \in \mathcal{D}_{\theta, \eta}} -\theta_i \qquad i=1,...3\\
+    & \text{subject to:}  \\
+    &  \tilde{y}(k)-\eta(k) + \theta_1 \tilde{y}(k-1)+ \\
+    &- \theta_1 \eta(k-1)  - \theta_2 u(k) - \theta_3 u(k-1)=0, \quad k=2,...,H\\
+    &-\Delta_\eta \le \eta(k) \le  \Delta_\eta, \quad k=1,...,H
+    \end{aligned}
+\end{equation*}
+
+\noindent
+\textbf{\large\color{red}PUI in SparsePOP}\\
+The objective of this paragraph is giving an accurate description of the data structures to be employed in order to solve our optimization problem using the \textsc{SparsePOP} tool. For simplicity we assume that $H=4$ I/O pairs are collected. Since the problems to be solved are very similar we will focus our attention on (\ref{eq:P1}) without loss of generality. Moreover the focus will be on the computation of PUI for the parameter $\theta_1$.\\
+
+\noindent
+\textbf{Step I: Objective function (\texttt{objPoly})}
+\begin{equation*}
+    f_0 = \theta_i  \qquad \textsf{(objective function)}
+\end{equation*}
+\begin{verbatim}
+    objPoly.typeCone=1;         % always 1 here
+    objPoly.dimVar=7;           % # opt. variables (including the constraints)
+    objPoly.degree=1;           % degree of f_0
+    objPoly.noTerms=1;          % number of monomials in f_0
+\end{verbatim}
+The data structure \texttt{objPoly.supports} in this case is a row-vector because $f_0$ has only one term, while the columns are \texttt{objPoly.dimVar}.
+\begin{equation*}
+    \texttt{supports} = \begin{bmatrix}
+        1&0&0&0&0&0&0
+    \end{bmatrix}
+\end{equation*}
+The term \texttt{objPoly.coef} is a scalar due to the fact that there is one monomial in $f_0$, then \texttt{objPoly.coef=1}\footnote[2]{Note that in the case of the problem (\ref{eq:P2}) the only thing which changes for each problem is only the term \texttt{coef} that will be \texttt{objPoly.coef=-1}}. The structure \texttt{objPoly} is completed as follows:
+\begin{verbatim}
+    objPoly.supports=supports; 
+    objPoly.coef=1;
+\end{verbatim}
+
+\noindent
+\textbf{Step II: equality constraints (\texttt{ineqPolySys})}\\ 
+Let's discuss how can we represent in SparsePOP for the PUI of $\theta_1$ the constraints:
+\begin{equation*}
+    \tilde{y}(k)-\eta(k) + \theta_1 \tilde{y}(k-1)- \theta_1 \eta(k-1)  - \theta_2 u(k) - \theta_3 u(k-1)=0, \quad \text{for} \ k=2,...,H
+\end{equation*}
+This means that, since $H=4$ the constraints are:
+\begin{align*}
+    &k=2 \quad \tilde{y}(2)-\eta(2) + \theta_1 \tilde{y}(1) - \theta_1 \eta(1) -\theta_2 u(2) - \theta_3 u(1)=0\\
+    &k=3 \quad \tilde{y}(3)-\eta(3) + \theta_1 \tilde{y}(2) - \theta_1 \eta(2) -\theta_2 u(3) - \theta_3 u(2)=0\\
+    &k=4 \quad \tilde{y}(4)-\eta(4) + \theta_1 \tilde{y}(3) - \theta_1 \eta(3) -\theta_2 u(4) - \theta_3 u(3)=0
+\end{align*}
+The data structures for these constraints are required to be packed together in the structure \texttt{ineqPolySys}, for indicate the subset of data structure for the first constraint we written, for example we use \texttt{ineqPolySys\{1\}}. In the following we are going to discuss their composition only for one constraint, since the procedure is almost the same. Let us analyse the constraint
+\begin{equation*}
+    \tilde{y}(2)-\eta(2) + \theta_1 \tilde{y}(1) - \theta_1 \eta(1) -\theta_2 u(2) - \theta_3 u(1)=0
+\end{equation*}
+
+\begin{verbatim}
+    ineqPolySys{1}.typeCone=-1; 
+    ineqPolySys{1}.dimVar=7; 
+    ineqPolySys{1}.degree=2; 
+    ineqPolySys{1}.noTerms=6; 
+\end{verbatim}
+The composition rule for \texttt{supports} even in the case of equality constraints is the same; we highlighted in {\color{blue}blue} the optimization variables across the columns and the monomial composing the constraint across the rows.
+\begin{equation*}
+    \texttt{supports}= 
+    \quad \begin{bmatrix}
+        &{\color{blue}\theta_1}&
+        {\color{blue}\theta_2}&
+        {\color{blue}\theta_3}&
+        {\color{blue}\eta(1)}&
+        {\color{blue}\eta(2)}&
+        {\color{blue}\eta(3)}&
+        {\color{blue}\eta(4)}\\
+        {\color{blue}\tilde{y}(2)}&
+        0&0&0&0&0&0&0\\
+        {\color{blue}-\eta(2)}
+        &0&0&0&0&{\color{red}1}&0&0\\
+        {\color{blue}+ \theta_1 \tilde{y}(1)} 
+        &{\color{red}1}&0&0&0&0&0&0\\
+        {\color{blue}- \theta_1 \eta(1)}
+        &{\color{red}1}&0&0&{\color{red}1}&0&0&0\\
+        {\color{blue}-\theta_2 u(2)}
+        &0&{\color{red}1}&0&0&0&0&0\\
+        {\color{blue}- \theta_3 u(1)} 
+        &0&0&{\color{red}1}&0&0&0&0
+    \end{bmatrix}
+\end{equation*}
+As usual in \texttt{coef} we put the coefficients of the monomials of the constraints
+\footnote[3]{All the terms in the monomials different than $\theta, \eta$ are only numbers!}
+\begin{equation*}
+    \texttt{coef} \ = \ \begin{bmatrix}
+        \tilde{y}(2)\\
+        -1\\
+        \tilde{y}(1)\\
+        -1\\
+        -u(2)\\
+        -u(1)
+    \end{bmatrix}
+\end{equation*}
+The procedure must be repeated for \texttt{ineqPolySys\{2\}} (constraint with $k$=3) and \texttt{ineqPolySys\{3\}} (constraint with $k$=4).
+\footnote[4]{It is quite clear that due to the structure of the problem to be solved, in \textsc{Matlab}, can be useful using some for cycles to make the notation compact. More specifically there is an external cycle on $\theta$ with index $i$ in (\ref{eq:P1}) and (\ref{eq:P2}) and another cycle on the constraints with index $k$}\\
+
+\noindent
+\textbf{Step III: Lower and upper bounds}
+The $\theta_i$ are unconstrained, then we put \texttt{$\pm$1e10} in the corresponding position in the vectors \texttt{lbd} and \texttt{ubd}. We have instead information on the boundedness of the noise sample $\eta(k)$. Let's assume that $\vert \Delta_\eta \vert = 5$. Then:
+\begin{equation*}
+    \texttt{lbd} = \begin{bmatrix}
+        -\texttt{1e10}\\
+        -\texttt{1e10}\\
+        -\texttt{1e10}\\
+        -5\\
+        -5\\
+        -5
+    \end{bmatrix}, \quad
+    \texttt{ubd} = \begin{bmatrix}
+        \texttt{1e10}\\
+        \texttt{1e10}\\
+        \texttt{1e10}\\
+        5\\
+        5\\
+        5
+    \end{bmatrix}
+\end{equation*}
+
+\noindent
+\textbf{Step IV: other parameters}\\
+Before calling the \texttt{sparsePOP()} command we have to define other two parameters (in the structure called \texttt{param}):
+\begin{enumerate}
+    \itemsep0em
+    \item \texttt{param.relaxOrder}: it is the order of relaxation $\delta$, this must be quite 'low' due to the fact that computational complexity grows exponentially with respect to $\theta$; usually \texttt{param.relaxOrder=1}
+    \item \texttt{param.POPSolver}: it is for the \textbf{solution refinement} after the optimization problem solution; for our aim \texttt{param.POPSolver='active-set'}
+\end{enumerate}
+
+\noindent
+\textbf{Final Step: using the \texttt{sparsePOP()} function and retrieve the solution}\\
+We are ready to solve our optimization problem! How it is showed in the SparsePOP manual, there many ways to call the POP solver, we use the following:
+{\normalsize{
+    \color{blue}
+    \begin{verbatim}
+         [param,SDPobjValue,POP,elapsedTime,SDPsolverInfo,SDPinfo]  = ... 
+         sparsePOP(objPoly,ineqPolySys,lbd,ubd,param); 
+    \end{verbatim}
+}}
+\noindent
+In order to retrieve the solution of the optimization problem:
+\begin{itemize}
+    \itemsep0em
+    \item \texttt{POP.objValueL} contains the \textbf{optimal solution} of the optimization problem
+    \footnote[5]{\texttt{theta\_min(i)=POP.objValueL} if you use a vector to store the $\underline{\theta}_i$. \textbf{Important: } when you are computing $\overline{\theta}_i$ you must write \texttt{theta\_max(i)=-POP.objValueL}};
+    \item \texttt{POP.xVectL} contains the \textbf{optimizer} (minimizer in our case); 
+\end{itemize}
+
 
 
 

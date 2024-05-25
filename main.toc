@@ -85,6 +85,6 @@
 \contentsline {section}{\numberline {8.5}Convex relaxation for PUIs computation}{58}{section.8.5}%
 \contentsline {subsection}{\numberline {8.5.1}Solution of a generic POP using \texttt {SparsePOP}}{60}{subsection.8.5.1}%
 \contentsline {subsubsection}{Example \#1 (general polynomial optimization problem)}{60}{subsubsection*.15}%
-\contentsline {subsubsection}{Example \#2 (PUIs computation) ...\texttt {todo!()}}{61}{subsubsection*.16}%
-\contentsline {chapter}{\numberline {9}State variable feedback control (SVFB)}{62}{chapter.9}%
-\contentsline {chapter}{\numberline {10}Formation contorl}{63}{chapter.10}%
+\contentsline {subsubsection}{Example \#2 (PUIs computation)}{62}{subsubsection*.16}%
+\contentsline {chapter}{\numberline {9}State variable feedback control (SVFB)}{66}{chapter.9}%
+\contentsline {chapter}{\numberline {10}Formation contorl}{67}{chapter.10}%
