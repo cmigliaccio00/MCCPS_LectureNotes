@@ -678,6 +678,54 @@ At the end of this procedure as we said:
     $$
 \end{itemize}
 
+\section{SM SysID: Final consideration}
+
+\subsection{SparsePOP: \texttt{exitflag}}
+At the end of the computation of the Feasible Parameter Set (FPS), SparsePOP provide us with a very useful information: the \texttt{exitflag}. If the value of this variable is different than one, it means that the \textit{Feasible parameter set} is \textbf{empty}: for sure one of our a-priori assumption is wrong. This is an information which we cannot have using some other approaches.
+
+\subsection{Other constraints for the optimization problems}
+We have seen that for the SysID problem which uses the Set-Membership approach, we use some a-priori information, which affects directly the definition of the Feasible Parameter Set, about:
+\begin{itemize}
+    \itemsep0em
+    \item The \textbf{noise structure} one among Equation Error(EE), Output Error(OE), Error-In-Variable (EIV); 
+    \item The \textbf{type of the system} under study and what is its order, i.e. linear/nonlinear and so on.
+\end{itemize} 
+Furthermore, in real-world experiments on the system we want to identify, we have some other useful information that we can exploit. Not rarely for example we have a-priori information about the \textbf{external stability of the system}, due to the fact that open-loop measurement on the plant excited with bounded inputs generates bounded outputs; moreover, we can know the steady-steady behaviour of the system for example by stimulate the system with a \textit{step}. \\In the former case we can find some inequality constraints in term of the \textit{Jury theorem} (it will not be discussed); in the latter case we can use a simple limit to impose a constraint on the steady state behaviour of the system. 
+
+\subsubsection{Enforce the DC-gain of the system to assume a precise value}
+We know that given a certain transfer function for a discrete time LTI system, we can know what is the DC-gain by applying 
+\begin{equation*}
+    K = \lim_{z\to 1} G(z) 
+\end{equation*}
+Then, let us give an example for a second-order discrete time LTI system. In general the transfer function for such a system is given by
+\begin{equation*}
+    G(z) = \frac{
+        \theta_3 z^2 + \theta_4 z + \theta_5
+    }{
+        z^2 + \theta_1 z + \theta_2
+    }
+\end{equation*}
+It depends on five parameters. Moreover, let us assume that we know as a \textit{further a-priori information} that the DC-Gain of the system to be identified is $K=118$, that is
+\begin{equation*}
+    K = 118 = \lim_{z \to 1}  \frac{
+        \theta_3 z^2 + \theta_4 z + \theta_5
+    }{
+        z^2 + \theta_1 z + \theta_2
+    } = \frac{
+        \theta_3+ \theta_4  + \theta_5
+    }{
+        1+ \theta_1  + \theta_2
+    }
+\end{equation*}
+This is an equality constraint which can be rewritten as 
+{\large{
+    \begin{equation*}
+        \theta_3 + \theta_4 + \theta_5 -118(1+\theta_1+\theta_2) =0
+    \end{equation*}
+}}
+
+Moreover it can be observed that this is a \textit{linear constraint}, which is a particular type of polynomial one. This can be taken into account by encapsulating it in the feasible parameter set in order to refine the solution of our identification problem. The way in which we can express it in SparsePOP is the same, that is by defining the associated fields of the structure \texttt{ineqPolySys\{i\}}\\
+This a-priori information and other would not have been used in the case we used the Least-Squares or other statistichal approaches.
 
 
 

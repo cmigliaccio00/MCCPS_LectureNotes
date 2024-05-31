@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.9)  25 MAY 2024 14:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.9)  31 MAY 2024 17:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -731,18 +731,18 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.47 ...ed Gradient Descent}{30}{subsection.5.2.1}
+l.47 ...ed Gradient Descent}{31}{subsection.5.2.1}
                                                   % [1
 
 ]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 86.
  (c:/texlive/2023/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-))
+) [2])
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
- [2] [3
+ [3] [4
 
 ]
 Chapter 1.
@@ -751,14 +751,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--4
 
  []
 
-<images/CPS.png, id=413, 410.7345pt x 271.61475pt>
+<images/CPS.png, id=492, 410.7345pt x 271.61475pt>
 File: images/CPS.png Graphic file (type png)
 <use images/CPS.png>
 Package pdftex.def Info: images/CPS.png  used on input line 15.
 (pdftex.def)             Requested size: 290.22107pt x 191.92358pt.
-[4
+[5
 
- <./images/CPS.png>] [5{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]) [6]
+ <./images/CPS.png>] [6{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]) [7]
 Chapter 2.
 (./1_Modeling/Ch2_SecureEstimation.tex
 Underfull \hbox (badness 10000) in paragraph at lines 10--12
@@ -770,14 +770,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--16
 
  []
 
-[7
+[8
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 74--76
 
  []
 
-[8]
+[9]
 Underfull \hbox (badness 10000) in paragraph at lines 103--104
 
  []
@@ -787,12 +787,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 144--146
 
  []
 
-[9]
+[10]
 Overfull \hbox (11.29066pt too wide) in paragraph at lines 164--176
 []| [] 
  []
 
-[10] [11]
+[11] [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 261.
@@ -832,7 +832,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 262--264
 
  []
 
-[12]
+[13]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 318.
@@ -849,12 +849,12 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 318.
 
-<images/Sparsity.png, id=490, 428.802pt x 199.947pt>
+<images/Sparsity.png, id=570, 428.802pt x 199.947pt>
 File: images/Sparsity.png Graphic file (type png)
 <use images/Sparsity.png>
 Package pdftex.def Info: images/Sparsity.png  used on input line 321.
 (pdftex.def)             Requested size: 343.04205pt x 159.95781pt.
-[13 <./images/Sparsity.png>]
+[14 <./images/Sparsity.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 329--331
 
  []
@@ -864,7 +864,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 358--361
 
  []
 
-[14]
+[15]
 Underfull \hbox (badness 10000) in paragraph at lines 383--384
 
  []
@@ -874,7 +874,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 403--404
 
  []
 
-[15]
+[16]
 Underfull \hbox (badness 10000) in paragraph at lines 431--434
 
  []
@@ -889,7 +889,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 448--450
 
  []
 
-[16]
+[17]
 Overfull \hbox (25.18736pt too wide) in paragraph at lines 484--485
 []\T1/cmr/m/n/12 In ([]2.7[]), by mul-ti-ply-ing all terms in ([]2.6[]) by $\OML/cmm/m/it/12 ^^\$ \T1/cmr/m/n/12 and by adding a con-stant term $[]$
  []
@@ -904,10 +904,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 513--515
 
  []
 
-[17]) [18]
+[18]) [19]
 Chapter 3.
 (./1_Modeling/Ch3_Localization.tex
-<images/RSS-cells.png, id=550, 242.70676pt x 155.3805pt>
+<images/RSS-cells.png, id=630, 242.70676pt x 155.3805pt>
 File: images/RSS-cells.png Graphic file (type png)
 <use images/RSS-cells.png>
 Package pdftex.def Info: images/RSS-cells.png  used on input line 24.
@@ -916,15 +916,15 @@ Package pdftex.def Info: images/RSS-cells.png  used on input line 24.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[19
+[20
 
 ]
-<images/RSS-training.png, id=559, 532.99126pt x 142.131pt>
+<images/RSS-training.png, id=639, 532.99126pt x 142.131pt>
 File: images/RSS-training.png Graphic file (type png)
 <use images/RSS-training.png>
 Package pdftex.def Info: images/RSS-training.png  used on input line 36.
 (pdftex.def)             Requested size: 426.39359pt x 113.70493pt.
-<images/RSS-Runtime.png, id=560, 239.6955pt x 145.7445pt>
+<images/RSS-Runtime.png, id=640, 239.6955pt x 145.7445pt>
 File: images/RSS-Runtime.png Graphic file (type png)
 <use images/RSS-Runtime.png>
 Package pdftex.def Info: images/RSS-Runtime.png  used on input line 46.
@@ -938,12 +938,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 51--53
 
  []
 
-[20 <./images/RSS-cells.png> <./images/RSS-training.png>]
+[21 <./images/RSS-cells.png> <./images/RSS-training.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 76--78
 
  []
 
-[21 <./images/RSS-Runtime.png>]) [22]
+[22 <./images/RSS-Runtime.png>]) [23]
 Chapter 4.
 (./1_Modeling/Ch4_DynamicSSE.tex
 Underfull \hbox (badness 10000) in paragraph at lines 11--14
@@ -955,7 +955,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--34
 
  []
 
-[23
+[24
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 35--36
@@ -967,12 +967,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 51--56
 
  []
 
-[24]
+[25]
 Underfull \hbox (badness 10000) in paragraph at lines 135--137
 
  []
 
-[25]
+[26]
 Underfull \hbox (badness 10000) in paragraph at lines 175--177
 
  []
@@ -992,10 +992,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 211--229
 
  []
 
-[26]) [27]
+[27]) [28]
 Chapter 5.
 (./1_Modeling/Ch5_DistributedAlgForCPSs.tex
-<images/Dist_Centr.png, id=646, 522.15076pt x 238.491pt>
+<images/Dist_Centr.png, id=725, 522.15076pt x 238.491pt>
 File: images/Dist_Centr.png Graphic file (type png)
 <use images/Dist_Centr.png>
 Package pdftex.def Info: images/Dist_Centr.png  used on input line 12.
@@ -1005,31 +1005,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 22--24
 
  []
 
-[28
+[29
 
  <./images/Dist_Centr.png>]
-<images/Pros_Cons.png, id=653, 554.67226pt x 278.2395pt>
+<images/Pros_Cons.png, id=733, 554.67226pt x 278.2395pt>
 File: images/Pros_Cons.png Graphic file (type png)
 <use images/Pros_Cons.png>
 Package pdftex.def Info: images/Pros_Cons.png  used on input line 27.
 (pdftex.def)             Requested size: 443.7384pt x 222.59189pt.
-<images/Graph.png, id=654, 156.585pt x 119.2455pt>
+<images/Graph.png, id=734, 156.585pt x 119.2455pt>
 File: images/Graph.png Graphic file (type png)
 <use images/Graph.png>
 Package pdftex.def Info: images/Graph.png  used on input line 45.
 (pdftex.def)             Requested size: 187.90105pt x 143.09386pt.
- [29 <./images/Pros_Cons.png>] [30 <./images/Graph.png>]
-<images/Es_graph.png, id=671, 281.25075pt x 228.855pt>
+ [30 <./images/Pros_Cons.png>] [31 <./images/Graph.png>]
+<images/Es_graph.png, id=751, 281.25075pt x 228.855pt>
 File: images/Es_graph.png Graphic file (type png)
 <use images/Es_graph.png>
 Package pdftex.def Info: images/Es_graph.png  used on input line 95.
 (pdftex.def)             Requested size: 196.87416pt x 160.1974pt.
- [31 <./images/Es_graph.png>]
+ [32 <./images/Es_graph.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 149--151
 
  []
 
-[32]
+[33]
 Underfull \hbox (badness 10000) in paragraph at lines 167--169
 
  []
@@ -1054,7 +1054,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 222--223
 
  []
 
-[33]
+[34]
 Underfull \hbox (badness 10000) in paragraph at lines 242--244
 
  []
@@ -1064,14 +1064,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 304--306
 
  []
 
-[34]
-<images/Es1_gr.png, id=695, 317.988pt x 301.72725pt>
+[35]
+<images/Es1_gr.png, id=775, 317.988pt x 301.72725pt>
 File: images/Es1_gr.png Graphic file (type png)
 <use images/Es1_gr.png>
 Package pdftex.def Info: images/Es1_gr.png  used on input line 378.
 (pdftex.def)             Requested size: 190.79427pt x 181.03773pt.
- [35 <./images/Es1_gr.png>]
-<images/Leader_follower.png, id=702, 284.262pt x 233.673pt>
+ [36 <./images/Es1_gr.png>]
+<images/Leader_follower.png, id=783, 284.262pt x 233.673pt>
 File: images/Leader_follower.png Graphic file (type png)
 <use images/Leader_follower.png>
 Package pdftex.def Info: images/Leader_follower.png  used on input line 394.
@@ -1091,7 +1091,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 420--421
 
  []
 
-[36 <./images/Leader_follower.png>]
+[37 <./images/Leader_follower.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 436.
@@ -1110,26 +1110,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 467--469
 []\T1/cmr/bx/n/14.4 Individual step[]\T1/cmr/m/n/14.4 : each agent com-putes its own gra-di-ent
  []
 
-[37] [38]) [39] [40
+[38] [39]) [40] [41
 
 ]
 Chapter 6.
 (./2_Control/Ch6_Intro.tex
-<images/MultiAgent.png, id=744, 295.1025pt x 263.7855pt>
+<images/MultiAgent.png, id=823, 295.1025pt x 263.7855pt>
 File: images/MultiAgent.png Graphic file (type png)
 <use images/MultiAgent.png>
 Package pdftex.def Info: images/MultiAgent.png  used on input line 6.
 (pdftex.def)             Requested size: 177.06285pt x 158.2725pt.
- [41
+ [42
 
  <./images/MultiAgent.png>]
-<images/state_feedback.png, id=751, 364.36125pt x 118.041pt>
+<images/state_feedback.png, id=831, 364.36125pt x 118.041pt>
 File: images/state_feedback.png Graphic file (type png)
 <use images/state_feedback.png>
 Package pdftex.def Info: images/state_feedback.png  used on input line 67.
 (pdftex.def)             Requested size: 291.48938pt x 94.4329pt.
- [42 <./images/state_feedback.png>]
-<images/observer.png, id=765, 313.17pt x 93.951pt>
+ [43 <./images/state_feedback.png>]
+<images/observer.png, id=844, 313.17pt x 93.951pt>
 File: images/observer.png Graphic file (type png)
 <use images/observer.png>
 Package pdftex.def Info: images/observer.png  used on input line 115.
@@ -1139,21 +1139,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 118--120
 
  []
 
-[43 <./images/Observer.png>] [44]) [45]
+[44 <./images/Observer.png>] [45]) [46]
 Chapter 7.
-(./2_Control/Ch7_SysID.tex [46
+(./2_Control/Ch7_SysID.tex [47
 
 ]
 LaTeX Font Info:    Trying to load font information for T1+cmss on input line 53.
  (c:/texlive/2023/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-<images/EIV.png, id=792, 290.88675pt x 148.75575pt>
+<images/EIV.png, id=872, 290.88675pt x 148.75575pt>
 File: images/EIV.png Graphic file (type png)
 <use images/EIV.png>
 Package pdftex.def Info: images/EIV.png  used on input line 85.
 (pdftex.def)             Requested size: 223.98347pt x 114.54227pt.
- [47 <./images/EIV.png>]
+ [48 <./images/EIV.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 111.
@@ -1166,12 +1166,12 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 111.
 
-[48] [49] [50] [51]
+[49] [50] [51] [52]
 Overfull \hbox (39.06676pt too wide) detected at line 297
 []
  []
 
-) [52]
+) [53]
 Chapter 8.
 (./2_Control/Ch8_SMId.tex
 File: images/EIV.png Graphic file (type png)
@@ -1182,15 +1182,15 @@ Package pdftex.def Info: images/EIV.png  used on input line 52.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[53
+[54
 
 ]
-<images/OE.png, id=868, 290.2845pt x 145.7445pt>
+<images/OE.png, id=948, 290.2845pt x 145.7445pt>
 File: images/OE.png Graphic file (type png)
 <use images/OE.png>
 Package pdftex.def Info: images/OE.png  used on input line 74.
 (pdftex.def)             Requested size: 290.28378pt x 145.74414pt.
- [54 <./images/OE.png>]
+ [55 <./images/OE.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 84--85
 
  []
@@ -1200,7 +1200,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 91--92
 
  []
 
-[55]
+[56]
 Underfull \hbox (badness 10000) in paragraph at lines 199--201
 
  []
@@ -1210,14 +1210,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 207--208
 
  []
 
-[56]
-<images/FPS.png, id=900, 430.0065pt x 307.74976pt>
+[57]
+<images/FPS.png, id=980, 430.0065pt x 307.74976pt>
 File: images/FPS.png Graphic file (type png)
 <use images/FPS.png>
 Package pdftex.def Info: images/FPS.png  used on input line 267.
 (pdftex.def)             Requested size: 344.00566pt x 246.20012pt.
- [57 <./images/FPS.png>]
-<images/FPS2.png, id=907, 430.60875pt x 307.74976pt>
+ [58 <./images/FPS.png>]
+<images/FPS2.png, id=987, 430.60875pt x 307.74976pt>
 File: images/FPS2.png Graphic file (type png)
 <use images/FPS2.png>
 Package pdftex.def Info: images/FPS2.png  used on input line 296.
@@ -1227,13 +1227,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 304--306
 
  []
 
-[58 <./images/FPS2.png>]
-<images/relaxation.png, id=919, 414.348pt x 331.2375pt>
+[59 <./images/FPS2.png>]
+<images/relaxation.png, id=999, 414.348pt x 331.2375pt>
 File: images/relaxation.png Graphic file (type png)
 <use images/relaxation.png>
 Package pdftex.def Info: images/relaxation.png  used on input line 314.
 (pdftex.def)             Requested size: 290.04161pt x 231.86465pt.
- [59 <./images/relaxation.png>]
+ [60 <./images/relaxation.png>]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 341.
 
@@ -1246,7 +1246,7 @@ Overfull \hbox (24.1088pt too wide) in paragraph at lines 383--384
 \T1/cmr/m/n/12 vari-able in-volved in the \T1/cmr/bx/n/12 con-sid-ered term\T1/cmr/m/n/12 . In our case since we have $[]$
  []
 
-[60]
+[61]
 Overfull \hbox (34.8765pt too wide) in paragraph at lines 414--414
 []    \T1/cmtt/m/n/12 ineqPolySys{1}.degree=2;          % inequality degree (deg max of the monomials)[] 
  []
@@ -1256,19 +1256,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 449--450
 
  []
 
-[61]
+[62]
 Underfull \hbox (badness 10000) in paragraph at lines 489--491
 
  []
 
-[62]
+[63]
 Underfull \hbox (badness 10000) in paragraph at lines 531--534
 
  []
 
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 536.
-[63]
+[64]
 Overfull \hbox (7.757pt too wide) in paragraph at lines 617--620
 \T1/cmr/m/n/12 The pro-ce-dure must be re-peated for \T1/cmtt/m/n/12 ineqPolySys{2} \T1/cmr/m/n/12 (con-straint with $\OML/cmm/m/it/12 k$\T1/cmr/m/n/12 =3) and \T1/cmtt/m/n/12 ineqPolySys{3}
  []
@@ -1278,13 +1278,73 @@ Underfull \hbox (badness 10000) in paragraph at lines 617--620
 
  []
 
-[64]) [65]
+[65] [66]) [67]
 Chapter 9.
-[66
+(./2_Control/Ch9_SVFB.tex [68
 
 ]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 28.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 28.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 57--58
+
+ []
+
+[69]
+Underfull \hbox (badness 10000) in paragraph at lines 138--140
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
+
+ []
+
+[70]
+Underfull \hbox (badness 10000) in paragraph at lines 196--197
+
+ []
+
+[71]
+Underfull \hbox (badness 10000) in paragraph at lines 228--229
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 243--246
+
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 281.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 281.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 281.
+
+[72]
+Underfull \hbox (badness 10000) in paragraph at lines 308--309
+
+ []
+
+) [73]
 Chapter 10.
-[67
+(./2_Control/Ch10_DynamicRegulator.tex [74
+
+]) [75]
+Chapter 11.
+[76
 
 ] (./main.aux)
  ***********
@@ -1296,21 +1356,21 @@ L3 programming layer <2024-02-20>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 87C51578409667F65A08B51D8B150AAA;17179.
+(rerunfilecheck)             Checksum: C3571D811ED5807D7A83CDCC0B61E644;21047.
  ) 
 Here is how much of TeX's memory you used:
- 26594 strings out of 474116
- 476467 string characters out of 5747718
+ 26685 strings out of 474116
+ 477863 string characters out of 5747718
  1959190 words of memory out of 5000000
- 48076 multiletter control sequences out of 15000+600000
+ 48101 multiletter control sequences out of 15000+600000
  605797 words of font info for 135 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  94i,18n,93p,2505b,782s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbi1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbi1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbi1728.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfit1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti2074.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb>
-Output written on main.pdf (68 pages, 1634294 bytes).
+<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbi1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbi1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbi1728.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfit1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti2074.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb>
+Output written on main.pdf (77 pages, 1693378 bytes).
 PDF statistics:
- 1277 PDF objects out of 1440 (max. 8388607)
- 1059 compressed objects within 11 object streams
- 340 named destinations out of 1000 (max. 500000)
- 708 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1451 PDF objects out of 1728 (max. 8388607)
+ 1220 compressed objects within 13 object streams
+ 400 named destinations out of 1000 (max. 500000)
+ 828 words of extra memory for PDF output out of 10000 (max. 10000000)
 

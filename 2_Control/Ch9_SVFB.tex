@@ -1,0 +1,316 @@
+After having had a discussion on different approaches about \textit{how to model} each single agent of our multi-agent system describing the CPS, it is time to talk about how we can control such a type of systems.
+
+\section{Communication network modeling}
+We know that the agents of the cyber-physical system can communicate each other by using a communication network which can be described by using a graph $\mathcal{G}$ or an \textbf{augmented graph} $\bar{\mathcal{G}}$ in the case that also the leader node is considered. A quite standard way to represent a graph in a data structure is using an \textbf{adjacency matrix} $\mathcal{A}$ in which each entry $a_{ij}$ is the weight for edge $(v_j, v_i)$ this implies that node $j$ can get information by node $i$. Moreover the set of node $j$ of $i$ is known as the \textbf{neighbourhood} and it is denoted with
+\begin{equation*}
+   \mathcal{N}_i = \{j \ | \ a_{ij}>0\}
+\end{equation*} 
+Accordint to the way the theory will be developed, it is assumed that no \textit{self-loop} are present in the graph; this implies that on the diagonal of the adjacency matrix we find all zeros.
+
+\section{Cooperative state variable feedback (SVFB) control} 
+\noindent
+It is important to remember that for the leader node $S_0$ and the agents $S_i$ the model to be used are respectively: 
+\begin{align*}
+    &\dot{x_0} = A x_0, \quad y_0 = C x_0\\
+    &\dot{x_i} = A x_i + B u_i, \quad y_i = C x_i
+\end{align*}
+The fact that there is not an input $u_0$ not indicate that on the leader node there is no input, this is only a convention for stating that the important \textit{Control input} is $u_i$.\\
+After having said this and before starting,  we have to clarify some more important assumptions, which at this step are crucial: 
+\begin{itemize}
+    \itemsep0em
+    \item We want to solve the \textbf{cooperative tracking problem} in which the trajectory to follow is dictated by a leader node $S_0$, which can be \textbf{observed} only by a subset of the follower;
+    \item At the moment, all the \textbf{state variables} are assumed to be \textbf{measurable} $\to$ $C=I$; 
+    \item If an agent i can \textbf{observe} the leader, such an agent is said to be \textbf{pinned to the leader} and the weight of the relative edge \textbf{in the augmented graph} is the \textbf{pinning gain}.
+    \item The only assumption we need on the \textbf{communication network} is the guaranty that there exists at least \textbf{one directed path} from the leader to every follower node.
+    \item The \textbf{control law} used by an agent can exploit only the information of its neighbourhood we denoted with $\mathcal{N}_i$.
+\end{itemize}
+
+\subsection{Local controller at each node $i$}
+An important quantity to define for each agent is the \textbf{neighbourhood tracking error} $\varepsilon_i$ whose expression is
+\begin{equation}
+    \varepsilon_i = \sum_{j=1}^N {
+        a_{ij}(x_j-x_i) + g_i (x_0-x_i)
+    }
+\end{equation}
+By using this quantity the \textbf{local control law} for each agent $i$ is defined by
+{\large{
+    \begin{equation}
+        u_i = cK\varepsilon_i
+    \end{equation}
+}}
+Where:
+\begin{itemize}
+    \itemsep0em
+    \item $c$ is the \textbf{coupling gain}; 
+    \item $K$ is the \textbf{feedback gain matrix}.
+\end{itemize}
+The \textit{closed-loop system dynamics} of each node is 
+\begin{equation}
+    \dot{x_i} = A x_i + B u_i = A x_i + cBK \biggl(
+        \sum_{j=1}^N {
+        a_{ij}(x_j-x_i) + g_i (x_0-x_i)
+    }
+    \biggr)
+\end{equation}
+
+\subsection{Global closed-loop control system}
+By using the \textbf{Kronecker product} we can group together the system dynamics equations as follows:\\
+
+\hspace*{-5mm}
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{.96\textwidth}     
+        \textbf{Global closed-loop dynamic system}
+        {\large{
+            \begin{equation}
+                \dot{x} = (I_N \otimes A - c(L+G)\otimes BK)x +
+                (c(L+G)\otimes BK)\underline{x}_{0}
+            \end{equation}
+        }}
+        where: 
+        \begin{itemize}
+            \itemsep0em
+            \item $I_N$ is the identity matrix
+            \item $x=col(x_1,x_2,...,x_N)\in\mathbb{R}^{nN}$, $x_0=col(x_0, x_0, ..., x_0)\in\mathbb{R}^{nN}$ 
+            \item $L$ is the \textbf{Laplacian Matrix} defined as \begin{equation*}
+                L=[l_{ij}] = D-\mathcal{A}, \quad
+                D=diag(d_1, d_2, ..., d_N) 
+            \end{equation*}
+            where $d_i$ is the \textbf{in-degree} of the $i$-th agent.
+            \item $G=diag(g_1, g_2, ..., g_N)$ is the \textbf{Pinning matrix}
+            \item $\otimes$ indicates the Kronecker products
+        \end{itemize}
+    \end{minipage}
+};
+\end{tikzpicture}%
+
+It can be proven this results by directly applying the provided defintions and using in particular the definiton for $\otimes${
+    {
+    \footnote[7]{
+        The \textbf{Kronecker product} is an \textbf{element-wise} operation between matrices. For example if you have 
+        \begin{equation*}
+            A = \begin{bmatrix}
+                a_{11}&a_{12}\\a_{21}&a_{22}
+            \end{bmatrix}, \ 
+            B = \begin{bmatrix}
+                b_{11}&b_{12}
+            \end{bmatrix}
+        \end{equation*}
+        then $A \otimes B$ is obtained as: 
+        \begin{equation*}
+            A \otimes B = \begin{bmatrix}
+                a_{11}B&a_{12}B\\
+                a_{21}B&a_{22}B
+            \end{bmatrix}=\begin{bmatrix}
+                a_{11}b_{11}&a_{11}b_{12}& 
+                a_{12}b_{11}&a_{12}b_{12}\\
+                a_{21}b_{11}&a_{21}b_{12}& 
+                a_{22}b_{11}&a_{22}b_{12}\\
+            \end{bmatrix}
+        \end{equation*}
+    }
+}
+}
+
+For the \textbf{cooperative tracking error} the objective is to track the behaviour $x_0(t)$ of the leader $S_0$, then another useful quantity related to this is the \textbf{local disagreement error} $\delta_i$ which can be extended for the overall system.\\
+Then, we define as \textbf{local disagreement error} the quantity: 
+\begin{equation}
+    \delta_i(t) = x_i(t) - {x}_0(t)
+\end{equation}
+Packing together all the state variables of \textit{all the agents} the \textbf{global disagreement error} $\delta(t)$ can be defined: 
+\begin{equation}
+    \delta(t) = x(t)-\underline{x}_0(t)=col(\delta_1, \delta_2, \dots, \delta_N).
+\end{equation}
+Intuitively we can imagine that if the the \textbf{global disagreement error} is "small" in a certain sense, we reach our purpose of following the trajectory dictated by $S_0$. What is the behaviour in time of the error? This question introduces the \textbf{global disagreement dynamics} as:
+\begin{align}
+    &\dot{\delta_t} = \dot{x}(t) - \dot{\underline{x}}_0 = A_c \delta(t), \label{eq:GDE} \\
+    &A_c = I_N \otimes A - c(L+G)\otimes BK
+\end{align}
+At this point the \textbf{objective of the cooperative-tracking problem} can be summarized as:
+{\large{
+    \begin{equation}
+        \lim_{t\to\infty}  \delta(t) = 0
+    \end{equation}
+}}
+The (\ref{eq:GDE}) is the state equation for a \textbf{dynamic system}, we know that this error \textbf{converges asymptotically to zero} if the matrix
+\begin{equation*}
+    A_c = I_N \otimes A - c(L+G)\otimes BK
+\end{equation*}
+is \textbf{Hurwitz}, i.e. all the eigenvalues $\lambda_i$ have \textbf{strictly negative real part}.\\
+
+\noindent
+\textbf{Lemma 1 (closed-loop eigenvalues)} The closed loop eigenvalues, ie the eigenvalues of $A_c$ can be computed as:
+\begin{equation}
+    \text{eig}(A_c) = \bigcup_{i=1}^N \text{eig}(A-c \lambda_iBK)
+\end{equation}  
+where $\lambda_i, \ i=1,..., N$ are the eigenvalues of the matrix $L+G$.
+
+\section{Controller design}
+\noindent
+The following considerations are obtained by directly analyzing the Lemma 1:
+\begin{itemize}
+    \itemsep0em
+    \item The \textbf{closed-loop dynamics} of the multi-agent system depends on:
+    \begin{itemize}
+        \item The \textbf{local controller parameters K} which are the same for each agent
+         \item The eigenvalues of the matrix $L+G$ that takes into account the \textbf{communication network effect}.
+        \item On the coupling gain $c$, this is used in order to cope with the communication network effect{\footnote[8]{
+            In fact we will see that its value is chosen according to the $\lambda_i$s.
+        }}.
+    \end{itemize}
+    \item The stability of the single agent does not imply the stability of the global CPS, that is
+    \begin{equation*}
+        (A-BK) \ \text{is Hurwitz} \nRightarrow Ac \ \text{is Hurwitz}
+    \end{equation*}
+\end{itemize}
+
+\hspace*{-5mm}
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{.96\textwidth}     
+        {\large{
+            \textbf{\underline{Theorem (Cooperative controller design)}}\\
+
+            Consider the \textbf{local distributed control protocols} $u_i= c K \varepsilon_i$, if holds that
+            \begin{equation*}
+                K = R^{-1} B^T P
+            \end{equation*}  
+            with $P$ is the unique positive definite solution ($P\succ 0$) of the \textit{Algebraic Riccati Equation} (ARE):
+            \begin{equation*}
+                A^T P + PA + Q - PBR^{-1}B^T P = 0
+            \end{equation*}
+            Then,
+            \begin{equation*}
+                \lim_{t\to\infty} \delta(t)=0
+            \end{equation*} 
+            if 
+            \begin{equation*}
+                c \ge \frac{1} {2 \min_{i\in\mathcal{N}} Re(\lambda_i)}
+            \end{equation*}
+        }}
+    \end{minipage}
+};
+\end{tikzpicture}%
+
+\subsection{Proof of the Theorem}
+In order to prove the Theorem, we need to fastly review some basic result on \textbf{optimal control} of LTI system.\\
+
+\noindent
+\textbf{Result 1 (Lyapunov equation and stability of a single LTI Equation)}
+Given an LTI system described by the following equation 
+\begin{equation}    \label{eq:LTI}
+    \dot{x} = Ax + Bu
+\end{equation}
+the system is asymptotically stable (Equivalent to state that $A$ Hurwitz) if and only if the \textbf{Lyapunov Equation}
+\begin{equation*}
+    A^* P + PA = -Q, \ Q \succ 0
+\end{equation*}
+has a solution $P$ where $P$ is symmetric and definite positive $P\succ 0$. $A^*$ indicates the conjugate transpose, which in case of real matrix $A$ is $A^T$.
+
+\subsubsection{Optimal Linear quadratic (LQ) control of LTI systems}
+Let us focus on a \textbf{single LTI system} (agent) described by (\ref{eq:LTI}) and let us assume that the state is \textit{fully measured}, the objective is \textbf{compute the input $u(t)$} which solves the following optimization problem:
+\begin{equation}
+    \begin{aligned} \label{eq:LQ_Problem}
+        u(t) = &\text{arg}\min_{u(t)} \bigg[
+        \frac{1}{2} \int_0^{+\infty} {
+            x^T(t)Qx(t) + u^T R u(t)
+        } dt \bigg] \\
+        &s.t. \\
+        & \dot{x}(t) = Ax(t) + Bu(t)
+    \end{aligned}
+\end{equation}
+The functional to be minimized is given by the \textbf{weighted sum} of the $\ell_2$-norm of the state $x(t)$ and of the input $u(t)$. \textbf{Why we want to minimize such a functional?}
+\begin{itemize}
+    \item By minimizing the \textbf{energy of $x(t)$}, which will be driven close to 0, we obtain: (i) shorter transient, (ii) damped oscillations; 
+    \item By minimizing the \textbf{energy of} $u(t)$ we minimize the energy required from actuators.
+\end{itemize}
+
+These two issues are coupled, for this reason by choosing properly $Q, R$ we can sistematically manage the trade-off between energy of the state and command activity.\\
+
+\noindent
+\textbf{Result 2 (solution of the optimal LQ problem)}\\
+The \textit{optimal solution} of the LQ problem is given by
+\begin{equation}
+    u(t) = -K x(t)
+\end{equation}
+where the matrix $K$ is given by 
+\begin{equation}
+    K=R^{-1} B^T P
+\end{equation}
+where $P \succ 0$ is the solution of the Algebraic Riccati Equation given by:
+\begin{equation}
+    A^T P + PA + Q + PBR^{-1}B^TP=0
+\end{equation} 
+\noindent
+Starting from these ingredients we can demonstrate the Theorem.\\
+
+
+In the \textbf{Lemma 1} we have seen that $A_c$ is Hurwitz if and only if the matrices $(A-c\lambda_i BK)$ for all $\lambda_i$, $i=1,..., N$. \\
+\textbf{Under which conditions $A-c\lambda_iBK$ is Hurwitz?} From the \textbf{Result 1} we know those matrix is Hurwitz if there exits a $P\succ0$ solution of the ARE such that{
+    \footnote[9]{In the next formula we use $Q_1$ in order to distinguish it from the Q used into ARE.}
+}:
+\begin{equation}
+    (A-c\lambda_iBK)^* P + P(A-c\lambda_iBK)=-Q_1, \ Q_1 \succ 0
+\end{equation}
+
+\indent
+We want to show that the left side of this equation is a symmetric positive definite matrix $Q_1$, this will be done by using simple algebraic manipulations.
+
+\begin{align*}
+    &A^T P + c\lambda_i^* K^T B^T P + PA - c\lambda_i PBK
+    \overset{\text{ARE}}{=} -Q + PBR^{-1}B^T P - c\lambda_i K^T B^T P - c\lambda_iPBK =\\
+    &\overset{\text{Hp:}\ K=R^{-1} B^T P}{=}
+    -Q + PBR^{-1}B^TP-c\lambda_i^* (R^{-1}B^T P)^T B^T P - c \lambda_i P B R^{-1} B^T P = \\
+    & = -Q + PBR^{-1} B^T P - c\lambda_i^* P B R^{-1}B^T P - c\lambda_i P B R^{-1}B^T P = \\
+    & = -Q -(c(\lambda_i + \lambda_i^*)-1)P B R^{-1}B^T P \overset{\alpha_i = Re(\lambda_i)}{=} 
+    - [Q+(2\alpha_i-1)P B R^{-1}B^T P]
+\end{align*}
+
+The objective is to show that $Q_1=Q+(2\alpha_i-1)P B R^{-1}B^T P$ is a symmetric positive definite matrix. But at this point we can note that: 
+\begin{itemize}
+    \item $Q$ is positive definite by construction; 
+    \item $P$ is positive definite because it is the solution of the Algebraic Riccati Equation;
+    \item $R^{-1}$ is a diagonal matrix, for this reason it is symmetric, moreover the eigenvalues (which are on the diagonal) are positive because we choose the weight ofor the input signals to be positive.
+    \item Finally for any matrix $B$ even not square, the product $B^T B$ is symmetric positive definite.
+\end{itemize} 
+The only condition which has to be verified is that
+\begin{equation}
+    2c\alpha_i-1>0 \iff c>\frac{1}{2\alpha_i}=\frac{1}{2Re(\alpha_i)}
+\end{equation}
+
+\section{Dynamics of the leader $S_0$}
+\noindent 
+In the initial part of the discussion we have seen that the dynamics of the leader node is given by 
+\begin{equation}
+    \dot{x_0}(t) = A x_0(t)
+\end{equation}
+in which we assumed no input is applied because there is not in the discussion of the \textit{cooperative controller design}. From the basic course of dynamic systems analysis we know that the free evolution of the system $S_0$ can be computed by solving the differential equation by means of the \textbf{Laplace Transform}. In particular:
+\begin{align*}
+    &\dot{x}_0(t) = Ax_0(t) \iff 
+    sX_0(s) - x_0(0) = A X_0(s) \iff 
+    sX_0(s)-AX_0(s) = x_0(0) \iff\\
+    &(sI-A)X_0(s) = x_0(0) \iff
+    X_0(s) = (sI-A)^{-1} x_0(0)  
+\end{align*}
+By applying the \textit{inverse Laplace transform} we can say that
+\begin{equation}
+    X_0(s) \overset{\mathcal{L}^{-1}}{\iff} x_0(t) = \mathcal{L}^{-1} \{
+        (sI-A)^{-1} x_0(0)
+    \}
+\end{equation}
+From this equation we observe that in order to get something interesting from the dynamics of the system we need some initial conditions. However, it is not said that the natural modes of the system satisfy us, that is the free evolution of the system does not satisfy the trajectory we want to dictate. \textbf{How ca we force the leader to generate a certain trajectory?} We have to modify the dynamics of the leader by modifying the eigenvalues of the matrix $A$ by using the pole placement technique. For example: 
+\begin{enumerate}
+    \item If we want the leader to generate a \textbf{step} we need an eigenvalue equal to zero and the remaining part of the eigenvalues to be with negative real part.
+    \item If we want a \textbf{ramp} we need two coincident eigenvalues and remaining part to be stable.
+    \item For a \textbf{sinusoidal reference} you need to manipulate with magnitude and phase of \textbf{complex conjugate eigenvalues}.
+\end{enumerate}
+
+Remember that these results come from the modal analysis and from the resulting Partial Fraction Decomposition (PFE) of the Laplace transform for the system under discussion.\\
+
+If nothing is modified the cooperative control protocol applied to each agent does not permit to reach the tracking as desired. Why? We have assumed the matrices $(A,B,C)$ to be equal for all the agents. Changing the dynamic matrix $A$ for the leader, also the followers have to change. For this reason:
+\begin{itemize}
+    \item We have to know which trajectory is desired for the agent to follow, and according to this deciding the \textbf{eigenvalues};
+    \item The matrix $K$ is decided accordingly
+    \item This matrix will modify also the matrices of the dynamics for the agents in a way that applying the \textbf{cooperative control protocol} all can work fine.
+\end{itemize}
+

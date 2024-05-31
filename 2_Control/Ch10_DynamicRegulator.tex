@@ -1,0 +1,65 @@
+In the previous chapter we have assumed that the state was fully measurable, i.e. the matrix $C=I$. This hypotesis in general does not hold for real world applications and so in order to design a \textit{cooperative control system} we first need to \textbf{estimate the state} $x_i$ of each agent. \\
+This is the reason that leads us to design a \textbf{design a device} which provides an \textbf{estimate} $\hat{x}_i$ of the state $x_i$ \textbf{for each agent} such that 
+\begin{equation}
+    \lim_{t \to \infty} \hat{x}(t) = x(t)
+\end{equation}
+
+\section{Cooperative observer design for a single agent}
+The only information can be shared among the agents is the \textbf{local output estimation error} which is defined as
+\begin{equation}
+    \tilde{y}_i = y_i - \hat{y}_i = y_i - C \hat{x}_i 
+\end{equation}
+For the design of the \textbf{local observer} is important also another quantity that is the \textbf{neighbourhood output estimation error} which is defined as: 
+{\large
+    \begin{equation}
+        \xi_i = \sum_{j=1}^N {a_{ij} (\tilde{y}_j - \tilde{y}_i) + g_i(\tilde{y}_0 - \tilde{y}_i)}
+    \end{equation}
+}
+Finally for a single agent in a cooperative context, the \textbf{cooperative observer} is by 
+\begin{equation}
+    \dot{\hat{x}}_i = A \hat{x}_i + B u_i - cF\xi_i
+\end{equation}
+This cooperative protocol leads to a \textbf{completely distributed observer} in the sense that is based only on: 
+\begin{itemize}
+    \item The \textbf{local output estimation error} $\tilde{y}_i$
+    \item The \textbf{estimation error} of the neighbours which is expressed by the succint number $\xi_i$
+\end{itemize} 
+
+\section{Global estimation error and global observer}
+We can pack together the equations for the local cooperative observers in order to obtain a \textbf{global cooperative observer dynamics}, defined as:
+\begin{equation}
+    \dot{\hat{x}}= A_o\hat{x} + 
+    (I_N \otimes B) u + c ((L+G)\otimes F) y
+\end{equation}
+where:
+\begin{itemize}
+    \item $A_o= (I_N \otimes A) - c ((L+G)\otimes FC)$
+    \item $\hat{x} = col(\hat{x_1}, \hat{x_2}, ..., \hat{x_N})$
+    \item $u=col(u_1, u_2, ..., u_N)$
+    \item $y=col(y_1,y_2, ..., y_N)$
+\end{itemize}
+\noindent
+The \textbf{global state estimation error} is defined as: 
+\begin{equation}
+    \tilde{x}(t) = x(t)-\hat{x}(t)
+\end{equation}
+where $x(t) = col(x_1(t), x_2(t), ..., x_N(t))$ and $\hat{x} = col(\hat{x_1}, \hat{x_2}, ..., \hat{x_N})$. 
+As in the case of the controller design we are interested in make this error as close as possible to zero. So one can wonder what is its evolution in time. We consider at this aim the \textbf{global estimation error dynamics} which is defined as: 
+\begin{equation}  \label{eq:GEED}
+    \dot{\tilde{x}}(t) = \dot{x}_i(t) - \dot{\hat{x}}_i(t) = A_o \tilde{x}(t)
+\end{equation}
+Our objective here is that
+\begin{equation}
+    \lim_{t\to\infty} \tilde{x}(t) = 0; 
+\end{equation}
+Since the equation (\ref{eq:GEED}) represents the state equation for a dynamic system, then this system (representing the evolution of the global estimation error in time) will converge to zero (i.e. it is asymptotically stable) if the matrix $A_o$ defined as:
+\begin{equation}
+    A_o=(I_N \otimes A) - c ((L+G)\otimes FC)
+\end{equation} 
+is \textbf{Hurwitz} which is equivalent to state its spectrum is made up of eigenvalues with \textit{negative real part}.
+
+\subsection{Global observer eigenvalues and design}
+
+\section{Cooperative dynamic regulator design}
+
+
