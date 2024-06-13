@@ -233,9 +233,297 @@ $\underset{\color{red}\forall i\in\{1,...,q\}}{\longrightarrow}$
 
 
 \section{Control of Cyber Physical Systems}
-\subsection*{Agents' experimental modeling (System Identification) }
-\subsection*{Modeling of the communication network}
-\subsection*{State Variable FeedBack control (SVFB)}
-\subsection*{Formation control}
+\subsection*{\color{red}Introduction}
+\textbf{Leader node} $
+    \begin{aligned}
+        S_0: \ \begin{cases}
+            \dot{x}_0=Ax_0\\
+            y_0=Cx_0
+        \end{cases}
+    \end{aligned}$ \qquad
+\textbf{Follower nodes} $\begin{aligned}
+    S_i=\begin{cases}
+        \dot{x}_i=Ax_i+Bu_i\\
+        y_i=Cx_i
+    \end{cases}
+\end{aligned}$ $i=1,...,N$\\
+\textbf{Communication network among the agents}
+$\mathcal{G} = \{\mathcal{V}, \mathcal{E}\}, \ \mathcal{V}=\{v_1, v_2, ..., v_N\}, \ 
+\mathcal{E} \subset \mathcal{V} \times \mathcal{V}$\\
+\textbf{Augmented graph(Agents + Leader node)}
+$\bar{\mathcal{G}} = \{
+    \bar{\mathcal{V}}, \bar{\mathcal{E}}
+\}, \ 
+\bar{\mathcal{V}}=\{v_0, v_1, ...,v_N\}, \ 
+\bar{\mathcal{E}}=\bar{\mathcal{V}} \times \bar{\mathcal{V}}$
+
+\subsection*{\color{red}Agents' experimental modeling (System Identification)}
+\textbf{Discrete time domain (LTI)} 
+$\begin{aligned}
+    &\text{state-space description} &\quad
+    &\begin{cases}
+        \dot{x}_i(t)=Ax_i(t)+Bu_i(t)\\
+        y_i(t)=Cx_i(t)
+    \end{cases}\\
+    &\text{transfer function description} &\quad
+    &H(s)=C(sI-A)^{-1}B
+\end{aligned}$\\
+\textbf{Continuous time domain (LTI)}
+$\begin{aligned}
+    &\text{state-space description} &\quad
+    &\begin{cases}
+        \dot{x}_i(k)=Ax_i(k)+Bu_i(k)\\
+        y_i(k)=Cx_i(k)
+    \end{cases}\\
+    &\text{transfer function description} &\quad
+    &H(z)=C(zI-A)^{-1}B
+\end{aligned}$ \\
+
+\noindent
+\textbf{Regression form}
+$y(k)=f(y(k-1), y(k-2), ...,y(k-n), u(k), u(k-1), ..., u(k-m), \theta), \ m\le n$\\
+
+\noindent
+\textbf{\color{blue}LEAST-SQUARES APPROACH} \\
+\begin{equation*}
+    \underbrace{\begin{bmatrix}
+    y(3)\\y(4)\\\vdots\\y(H)
+\end{bmatrix}}_{y} 
+=\underbrace{ 
+\begin{bmatrix}
+    y(2)&y(1)&u(3)&u(2)&u(1)\\
+    y(3)&y(2)&u(4)&u(3)&u(2)\\
+    &\vdots&\vdots&\vdots&\vdots\\
+    y(H-1)&y(H-2)&u(H)&u(H-1)&u(H-2)
+\end{bmatrix}}_{A} \underbrace{\begin{bmatrix}
+    \theta_1\\\theta_2\\\vdots\\\theta_H
+\end{bmatrix}}_{\theta}\end{equation*}\\
+\textbf{Solution of LS: } $\hat{\theta} = A^\dagger y = (A^TA)^{-1}A^T y$ this is the solution of: $ \hat{\theta} = \text{arg}\min_\theta \Vert A\theta-y\Vert_2^2$
+
+\noindent
+$\begin{aligned}
+    &\textbf{Least Squares properties } 
+    \underset{H\to\infty}{\lim} \mathbb{E}\big[\hat{\theta}\big] = \theta\\
+    &\textsf{(\small Consistency property)}  
+\end{aligned}
+$
+$\iff$ $\begin{cases}
+    \textsf{- The error apper in the equation as an additive  }\\
+    \textsf{ term $e(k)$ called the \textbf{equation error (EE)}}\\
+    \textsf{- The $e(k) k=1,...,H$ represents a white gaussian }\\
+    \textsf{ noise, that is the samples are \textit{indipendent and}}\\
+    \textsf{\textit{ identically distributed} (iid)}
+\end{cases}$ \\
+
+\noindent
+\textbf{\color{blue}SET-MEMBERSHIP APPROACH} [small amount of data + \textbf{mild assumption} on the noise]\\
+\textbf{Main ingredients}
+$\begin{cases}
+     y(k) = f(y(k-1),...,y(k-n), u(k), u(k-1), u(k-m), \theta_1, ..., \theta_{n+m+1}), \quad m \le n\\
+    \textsf{(1) A-priori assumption on the system } m,n \text{ known + class of function } \mathcal{F} \ \text{known} \\
+    \textsf{A-priori \textbf{assumption on the noise}: Equation Error, Outuput Error, Error-In-Variable}\\
+    \textsf{Input/Output noise are \textbf{bounded}} \to \textsf{polynomial constraints} \iff \\
+    \mathcal{B}_\eta = \{
+                \eta: \ \vert \eta(k) \vert \le \Delta_\eta
+            \}, \quad
+            \mathcal{B}_\xi = \{
+                \xi : \ \vert \xi(k) \vert \le \Delta_\xi
+            \} 
+    
+\end{cases}$        \\
+
+\noindent
+\textbf{Feasible Parameter Set (FPS)} \\
+\begin{equation*}
+    \begin{aligned}
+    \mathcal{D}_\theta = &\{
+        \theta\in\mathbb{R}^p: \
+        y(k)=f(y(k-1), ..., y(k-n), u(k),u(k-1), ..., u(k-m), \theta), \ k=n+1,...,H,\\
+        & y(k)=\tilde{y}(k)-\eta(k), \quad 
+        u(k)=\tilde{u}(k)-\xi(k), \ k=1, ..., H
+        \vert \xi(k) \vert \le \Delta_\xi, \ 
+        \vert \eta(k) \vert \le \Delta_\eta, \ 
+        k=1,...,H
+        \}
+\end{aligned}
+\end{equation*}
+
+\vspace{0.7em}
+\noindent
+\textbf{Extended Feasible Parameter Set (EFPS)} {\small{(non convex -set defined by \textbf{polynomial constraints})}}
+
+\begin{equation*}
+    \linespread{0.3em}
+    \begin{aligned}
+        \mathcal{D}_{\theta,\xi,\eta} =&\big\{
+            \theta\in\mathbb{R}^p,\ 
+            \xi \in \mathbb{R}^H, \
+            \eta \in \mathbb{R}^H: \ 
+            (\tilde{y}(k)-\eta(k))+ 
+            \sum_{i=1}^n {\theta_i (\tilde{y}(k-1)-\eta(k-1))} =\\ &=\sum_{j=0}^m {\theta_j} (u(k-j)-\xi(k-j)), \ k=n+1, ..., H 
+            \vert \xi(k) \vert \le \Delta_\xi, \ 
+            \vert \eta(k) \vert \le \Delta_\eta, \ 
+            k=1,...,H
+        \big\}
+    \end{aligned}
+\end{equation*}
+
+\noindent
+\textbf{Parameter Uncertainty Intervals (PUIs)}
+$\underline{\theta}_k=\underset{\theta,\xi,\eta\in\mathcal{D_{\theta,\xi,\eta}}}{\min}
+ {\theta_k}, \quad \overline{\theta}_k=\underset{\theta,\xi,\eta\in\mathcal{D_{\theta,\xi,\eta}}} {\max}{\theta_k} \label{eq:PUIs}, \ PUI_{\theta_k} =  [\underline{\theta}_k, \overline{\theta}_k]$\\
+
+\noindent
+\textbf{Use of PUI} $
+\begin{cases}
+    \textsf{In the correct form for \textbf{Robust control}: $\mathcal{H}_\infty$, $\mu$-synthesis...}\\
+    \textsf{In case we need a single model $\to$ \textbf{central estimate} defined as }
+    \theta_k^c = \frac{\underline{\theta}_k+\overline{\theta}_k}{2}\\
+    \textsf{\textbf{central estimate}} \iff 
+    \textsf{Chebyshev center of $\mathcal{D}_\theta$ in $\ell_\infty$-norm} 
+\end{cases}$\\
+$\begin{aligned}
+    \centering
+    &\textbf{Other potentially availale a-priori info}\\
+    &{\small{\textsf{(can be encapsulated in EFPS)}}}
+\end{aligned}$
+$\begin{cases}
+    \textsf{DC-GAIN: use of limits } s\to0, \ z\to 1 \textsf{ (linear constraints)}\\
+    \textsf{BIBO stability of the system} \to \textsf{enforced with Jury's Theorem}
+\end{cases}$\\
+
+\noindent
+\textbf{Convex relaxation for PUIs }\\
+Original optimization problem $\underset{\textsf{Moment Theory}}{\Longrightarrow}$ Set of SDPs $\underset{\textsf{depends on}}{\leftarrow}$ \textbf{Order of relaxation $\delta$}
+\noindent
+It holds that:
+$\underset{\delta\to\infty}{\lim}  \underline{\theta}_k^\delta = \underline{\theta}_k, \quad
+\underset{\delta\to\infty}{\lim} \overline{\theta}_k^\delta = \overline{\theta}_k \quad$ 
+\textbf{Computational complexity} $\begin{cases}
+    \textsf{Exponential in } \delta\\
+    \textsf{Linear in number of parameters}
+\end{cases}$\\
+
+\noindent
+\textbf{\large\texttt{SparsePOP} data structures}\\
+\textbf{Problem of type} $
+\begin{aligned}
+    \min_{x\in\mathbb{R}^n}  \quad & f_0(x) \ 
+        &\text{s.t.} f_k(x)\ge 0 \quad (k=1,...,l), f_k(x)=0 \quad (k=l+1, ..., m), \texttt{lb}_i \le x_i \le \texttt{ub}_i
+\end{aligned}$\\
+$\begin{aligned}
+    &\textbf{Objective function $f_0$ (\texttt{objPoly})} \\
+    &\textbf{Constraints $f_k$ (\texttt{ineqPolySys\{k\}})}
+\end{aligned}$
+$\begin{cases}
+    \texttt{typeCone} \to \textsf{1 (equality), -1 (inequality)}\\
+    \texttt{dimVar}\to \textsf{\# of opt. variables including those in the constraints}\\
+    \texttt{degreee} \to \textsf{degree of $f_0$/$f_k$}\\
+    \texttt{noTerms} \to \textsf{number of monomials appearing in $f_0$/$f_k$} \\
+    \texttt{supports} \to \textsf{rows=noTerms, columns=dimVar}\\
+    \texttt{coef} \to \textsf{coefficients of the polynomial}
+\end{cases}$
+\\
+\noindent
+\textbf{Order of relaxation} \texttt{param.relaxOrder}\\
+\textbf{Solution refinement} \texttt{param.POPSolver='active-set'}\\
+\vspace{-1.5em}
+{\color{blue}
+\begin{verbatim}
+    [param,SDPobjValue,POP,elapsedTime,SDPsolverInfo,SDPinfo]  = ... 
+         sparsePOP(objPoly,ineqPolySys,lbd,ubd,param); 
+\end{verbatim}
+}
+
+
+%-------------------------------------------------------
+\subsection*{\color{red}Distributed optimal cooperative control of multi-agent systems (SVFB)}
+\textbf{Cooperative tracking regulator} $\iff$ The leader dictate a behaviour tracked by the agents\\
+
+\noindent
+\textbf{Neighbourhood of an agent} $ \mathcal{N}_i = \{j \ | \ a_{ij}>0\} \quad$ \textbf{Pinning matrix}  $G=diag(g_1, g_2, ..., g_N)$\\
+\textbf{Neighbourhood tracking error} $ \varepsilon_i = \sum_{j=1}^N {
+    a_{ij}(x_j-x_i) + g_i (x_0-x_i)
+}$
+\textbf{Local controller} $u_i = cK\varepsilon_i$\\
+\textbf{Closed-loop system dynamics}
+$\dot{x_i} = A x_i + B u_i = A x_i + cBK \biggl(
+    \sum_{j=1}^N {
+    a_{ij}(x_j-x_i) + g_i (x_0-x_i)
+}
+\biggr)$
+\textbf{Laplacian matrix} $ L=[l_{ij}] = D-\mathcal{A}, \quad
+D=diag(d_1, d_2, ..., d_N) $\\
+
+\noindent
+\textbf{Global closed-loop dynamics} $ \dot{x} = (I_N \otimes A - c(L+G)\otimes BK)x +
+(c(L+G)\otimes BK)\underline{x}_{0}$\\
+\textbf{Disagreemnent error} $\begin{cases}
+    \textsf{\textbf{Local }}   \delta_i(t) = x_i(t) - {x}_0(t)\\
+    \textsf{\textbf{Global }}   \delta(t) = x(t)-\underline{x}_0(t)=col(\delta_1, \delta_2, \dots, \delta_N).
+\end{cases}$\\
+\textbf{Global disagreement error dynamics} $\begin{aligned}
+    &\dot{\delta_t} = \dot{x}(t) - \dot{\underline{x}}_0 = A_c \delta(t), \label{eq:GDE} \\
+    &A_c = I_N \otimes A - c(L+G)\otimes BK
+\end{aligned}$\\
+
+\noindent
+\textbf{\color{blue}Objective of cooperative tracking} 
+$\underset{t\to\infty}{\lim}  \delta(t) = 0 \iff
+A_c$ is \textbf{Hurwitz}\\
+\textbf{Closed-loop eigenvalues} $\text{eig}(A_c) = \bigcup_{i=1}^N \text{eig}(A-c \lambda_iBK)$ where $\lambda_i$ are the eigenvalues of $L+G$\\
+
+\noindent
+\textbf{Cooperative controller design ($K, c$)} $\begin{cases}
+    K = R^{-1} B^T P,  \quad R \textsf{ properly selected} \textbf{ \small (controller gain matrix)}\\
+    P \ \textsf{solution of ARE: } A^T P + PA + Q - PBR^{-1}B^T P = 0\\
+    Q, R \ \to  u(t) = \text{arg}\underset{u(t)}{\min}\bigg[
+        \frac{1}{2} \int_0^{+\infty} {
+            \Vert x(t) \Vert_Q + 
+            \Vert u(t) \Vert_R
+        } \ dt \bigg] \textsf{\small[opt. LQ]}\\
+    c \ge \frac{1} {2 \min_{i\in\mathcal{N}} Re(\lambda_i)} \textbf{ (coupling gain)} 
+\end{cases}$\\
+
+\noindent
+\textbf{Dynamic of the leader $S_0$} $\quad \dot{x_0}(t) = A x_0(t)- BK'x, \ K'$ in order to have $\begin{cases}
+    \textsf{step} \to \textsf{one $\lambda_i=0$}\\
+    \textsf{ramp} \to \textsf{two coincident $\lambda_i$}\\
+    \textsf{sine} \to \textsf{complex conjugate $\lambda_i$}
+\end{cases}$\\
+
+\subsection*{\color{red}Dynamic regulator design for CPSs}
+\textbf{\color{blue}\large GLOBAL OBSERVER DESIGN}\\
+
+\noindent
+\textbf{Local output estimation error} $ \tilde{y}_i = y_i - \hat{y}_i = y_i - C \hat{x}_i $\\
+\textbf{Neighbourhood output estimation error} $\xi_i = \sum_{j=1}^N {a_{ij} (\tilde{y}_j - \tilde{y}_i) + g_i(\tilde{y}_0 - \tilde{y}_i)}$\\
+\textbf{Local observer} $\dot{\hat{x}}_i = A \hat{x}_i + B u_i - cF\xi_i$\\
+\noindent
+\textbf{Global cooperative observer dynamics} 
+$\begin{aligned}
+    &\dot{\hat{x}}= A_o\hat{x} + 
+(I_N \otimes B) u + c ((L+G)\otimes F) y\\
+&A_o= (I_N \otimes A) - c ((L+G)\otimes FC)
+\end{aligned}$
+
+\noindent
+\textbf{Global observer quantities} $\begin{cases}
+    \tilde{x}(t) = x(t)-\hat{x}(t) \to \ \textsf{Global state estimation error} \\
+    \dot{\tilde{x}}(t) = \dot{x}_i(t) - \dot{\hat{x}}_i(t) = A_o \tilde{x}(t) \to \ \textsf{estimation error dynamics}\\
+    \underset{t\to\infty}{\lim} \tilde{x}(t) = 0 \to \ \textsf{Cooperative observer objective} \to A_o \textbf{ Hurwitz}
+\end{cases}$\\
+
+\noindent
+\textbf{Global Observer eigenvalues} \texttt{to do...} \\
+
+\noindent
+\textbf{Global Observer design ($F,c$)} \texttt{to do...}\\
+
+\noindent
+\textbf{\color{blue}\large COOPERATIVE DYNAMIC REGULATOR DESIGN} \texttt{to do...}\\
+
+%-------------------------------------------------------
+\subsection*{\color{red}Formation control} \texttt{to do...}
 
 \end{document}

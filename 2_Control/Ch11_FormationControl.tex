@@ -1,0 +1,93 @@
+This last chapter is focused on \textbf{formability of multi-agent systes  (MASs)}. The problem is concerned with the introduction of a \textbf{protocol} that has the ability to \textbf{drive the MAS involved to the desired formation}. How we will able to see, the formability of MAS could depend on many aspects: the graph topology according which the nodes intercommunicates, the dynamic of the single agent etc\dots
+We will assume initially that there is not a leader node among the agents.
+
+\section{General formulation}
+\noindent
+In this part, for sake of simplicity, we will assume that the N agents are identical, and the state to be fully measurable (i.e. $C=I$). In this framework the \textbf{desired formation} is defined in term of the values assumed by the state variables of the $S_i$ \textbf{relatively} to the state variables of the other agents.\\
+We will use a matrix $H$ defined as
+\begin{equation*}
+    H = [h_1^T\ h_2^T \ ... \ h_N^T]^T \in \mathbb{R}^{nN}
+\end{equation*}
+the quantity $(h_j-h_i)$ is the \textbf{desired behaviour} of $S_i$ with respect to the agent $S_j$. For the moment we will assume a \textbf{time-invariant formation}, this is equivalent to state we want to reach a \textit{static shape}, for this reason the matrix $H$ does not depend on time. At this point the matrix  $H$ can be used to describe the vertex of a polygon formation.\\
+
+\section{Distributed state-feedback formation control}
+After having introduced the topic, we have to define a way to define a control law $u_i$ such that the agent $S_i$ could evolve in order to reach a certain formation.
+
+We have said that the \textit{"relative distance"} betweeen the state variables are important, not the absolute one. We can adopt a \textbf{state-feedback formation control protocol} designed as
+\begin{equation*}
+    u_i = cK\varepsilon_i
+\end{equation*}
+where this time $\varepsilon_i$ is the \textbf{neighbourhood formation error}, since we want that for each pair of agents $S_i$, $S_j$ the difference between their state variables was $h_j-h_i$ we obtain the error in this way:
+\begin{equation}
+    \varepsilon_i = \sum_{j=1}^N a_{ij} \big[
+        (x_j-x_i) - (h_j-h_i)
+    \big]
+\end{equation}
+We can choose $c, K$ according to the \textbf{Theorem 1}, the same we have done for the \textbf{follower-leader} configuration.\\
+Despite we have said that there is not a leader, it is useful to fix a node with respect to the others in order to define the  \textit{local and global} \textbf{formation error} and \textbf{dynamics}. \\
+We define the \textbf{local formation error} as the quantity
+\begin{equation*}
+    \delta_i = (x_i-x_1) - (h_i-h_1), \ i=2,...,N
+\end{equation*}
+the \textbf{global formation error} (in a similar way we did for the disagreement error) it is obtained by stacking the vectors $\delta_i$ for each agent from 2 to N  as follows: 
+\begin{equation*}
+    \delta = col(\delta_2, \delta_3, ..., \delta_N)
+\end{equation*}
+Finally, it is useful to define the quantity $\delta_H$ as
+\begin{equation*}
+    \delta_H = [(h2-h1)\quad (h3-h1)\quad ...\quad (h_N-h1)]
+\end{equation*}
+\noindent
+After having defined some important quantities we are ready to introduce the\\
+
+%Per disegnare il box
+\hspace*{-5mm}
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{.96\textwidth}  
+        \large{
+            \textbf{Global error formation dynamics}  \\
+            The \textbf{global error formation dynamics} is defined as
+            \begin{equation*}
+                \dot{\delta}(t) = 
+                \underbrace{[
+                    I_{N-1} \otimes A - (L_{22}+\textbf{1}_{N-1} \alpha^T) \otimes cBK
+                ]}_{A_c}
+                 \delta(t) + (I_{N-1} \otimes A)\delta_H
+            \end{equation*}  
+            where
+            \begin{equation*}
+                L_{22} = \begin{bmatrix}
+                    d_2&-a_{23}&...&-a_{2N}\\
+                    -a_{32}&d_3&...&-a{3N}\\
+                    \vdots&\vdots&\ddots &\vdots\\
+                    -a_{N2}&-a_{N3}&...&-d_N
+                \end{bmatrix}, \quad
+                \alpha = (a_{12}, a_{13},...,a_{1N})^T
+            \end{equation*}
+        } 
+    \end{minipage}
+};
+\end{tikzpicture}\\
+
+\noindent
+The \textbf{distributed formation control problem} is solved if we succed in drive the estimation error to zero, i.e. 
+\begin{equation*}
+    \lim_{t\to\infty} \delta(t)=0
+\end{equation*}
+We obtain this conditions are satisfied: 
+\begin{itemize}
+    \item The matrix $A_c$ is Hurwitz;
+    \item The quantity $(I_{N-1} \otimes A)\delta_H=0$
+\end{itemize}
+\noindent
+Finally we can say that the \textbf{formation control protocol is solvable} if and only if: 
+\begin{itemize}
+    \itemsep0em
+    \item The graph $\mathcal{G}$ has a spanning tree;
+    \item The scalar gain $c$ and the gain matrix $K$ are chosen in a way that the matrix $A_c$ is Hurwitz; 
+    \item The formation H is chosen in order to satisfy the condition $(I_{N-1} \otimes A)\delta_H=0$
+\end{itemize}
+
+\section{Example of formation (triangle)}
+Let us suppose that the formation we want to reach is a triangle whose vertex are $A=(-0.5, 0)$, $B=(0.5, 0)$, $C=(0, \sqrt(3)/2)$ the vertex $A, B, C$ are respectively $h_1=(-0.5, 0)^T$, $h_2=(0.5, 0)^T$, $h_3=(0, \sqrt(3)/2)^T$. For this reason $H_1=(h_1^T,h_2^T, h_3^T)$ is a way to describing an equilateral triangle.
